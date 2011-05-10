@@ -37,7 +37,9 @@ function thcfg_admin_menu() {
 }
 
 function thcfg_admin_page() {
-	include 'control.php';
+	require_once('control.php');
+	$control = new Thcfg_Controller();
+	$control->action();
 }
 
 function thcfg_admin_head() {
