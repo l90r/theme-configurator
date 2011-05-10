@@ -29,5 +29,24 @@ Author URI: http://www.l90r.com/
 
 /* register hooks */
 
+add_action('admin_menu', 'thcfg_admin_menu' );
+
+function thcfg_admin_menu() {
+	$name = add_theme_page('Settings', 'Settings', 'edit_pages', 'Settings', 'thcfg_admin_page' );
+	add_action('admin_head-' . $name, 'thcfg_admin_head' );
+}
+
+function thcfg_admin_page() {
+	include 'control.php';
+}
+
+function thcfg_admin_head() {
+	$dir = plugin_basename(__FILE__); 
+	echo '<link rel="stylesheet" href="' . plugins_url( 'settings.css', __FILE__ ) . '" type="text/css">';
+	echo '<script type="text/javascript" src="' . plugins_url( 'settings.js', __FILE__ ) . '"></script>';
+	echo '<script type="text/javascript" src="' . plugins_url( '3rd/farbtastic/farbtastic.js', __FILE__ ) . '"></script>';
+	echo '<link rel="stylesheet" href="' . plugins_url( '3rd/farbtastic/farbtastic.css', __FILE__ ) . '" type="text/css">';
+}
+
 
 ?>
