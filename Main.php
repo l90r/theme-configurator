@@ -1,15 +1,13 @@
 <?php
 
-class Thcfg_Controller {
+class Thcfg_Main {
 
     private $values, $structure;
-    
-    function __construct() {
+        
+    function action() {
         $this->values = json_decode(file_get_contents(THCFG_PATH . '/data.json'), true);
         $this->structure = json_decode(file_get_contents(THCFG_PATH . '/structure.json'));
-    }
-    
-    function action() {
+
         $this->display();
     }
     

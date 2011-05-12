@@ -39,8 +39,13 @@ function thcfg_admin_menu() {
 }
 
 function thcfg_admin_page() {
-	require_once('control.php');
-	$control = new Thcfg_Controller();
+	if($_REQUEST['thcfg_admin']) {
+		require_once('Admin.php');
+		$control = new Thcfg_Admin();
+	} else {
+		require_once('Main.php');
+		$control = new Thcfg_Main();
+	}
 	$control->action();
 }
 
