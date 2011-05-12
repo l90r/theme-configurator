@@ -51,8 +51,8 @@ function thcfg_admin_page() {
 
 function thcfg_admin_head() {
 	$dir = plugin_basename(__FILE__); 
-	echo '<link rel="stylesheet" href="' . plugins_url( 'settings.css', __FILE__ ) . '" type="text/css">';
-	echo '<script type="text/javascript" src="' . plugins_url( 'settings.js', __FILE__ ) . '"></script>';
+	echo '<link rel="stylesheet" href="' . plugins_url( 'style.css', __FILE__ ) . '" type="text/css">';
+	echo '<script type="text/javascript" src="' . plugins_url( 'js/main.js', __FILE__ ) . '"></script>';
 	echo '<script type="text/javascript" src="' . plugins_url( '3rd/farbtastic/farbtastic.js', __FILE__ ) . '"></script>';
 	echo '<link rel="stylesheet" href="' . plugins_url( '3rd/farbtastic/farbtastic.css', __FILE__ ) . '" type="text/css">';
 }

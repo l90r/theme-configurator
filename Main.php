@@ -20,7 +20,7 @@ class Thcfg_Main {
         $contents = $this->values['contents'];
         $colors = $this->values['colors'];
         
-        include('template.php');
+        include('tpl/main.php');
 
     }
 }
