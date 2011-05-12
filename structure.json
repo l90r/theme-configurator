@@ -1,0 +1,31 @@
+{
+    "colors":[
+        {"id": "mytheme_bg", "title": "Background"},
+        {"id": "mytheme_border", "title": "Border"},
+        {"id": "mytheme_contentbg", "title": "Content Background"},
+        {"id": "mytheme_framebg", "title": "Frame Background"},
+        {"id": "mytheme_tagtabtxt", "title": "Tag Tab Text"},
+        {"id": "mytheme_tagtabbg", "title": "Tag Tab Background"},
+        {"id": "mytheme_pagetabtxt", "title": "Page Tab Text"},
+        {"id": "mytheme_pagetabbg", "title": "Page Tab Background"},
+        {"id": "mytheme_hd", "title": "Header"},
+        {"id": "mytheme_txt", "title": "General Text"},
+        {"id": "mytheme_lnk", "title": "Link"},
+        {"id": "mytheme_date", "title": "Date"}
+    ],
+    "images":[
+        {"id": "mytheme_bgimg", "title": "Background"},
+        {"id": "mytheme_titleimg", "title": "Title"},
+        {"id": "mytheme_loadingimg", "title": "Loading Icon"}
+        
+    ],
+    "contents":[
+        {"id": "mytheme_tags", "title": "Tags"},
+        {"id": "mytheme_pages", "title": "Pages"}
+    ],
+    "phrases":[
+        {"id": "mytheme_readon", "title": "Go to entire post"},
+        {"id": "mytheme_older", "title": "Load older posts"},
+        {"id": "mytheme_counter", "title": "Comments count"}
+    ]
+}

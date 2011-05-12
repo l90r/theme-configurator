@@ -31,6 +31,8 @@ Author URI: http://www.l90r.com/
 
 add_action('admin_menu', 'thcfg_admin_menu' );
 
+define('THCFG_PATH', dirname(__FILE__));
+
 function thcfg_admin_menu() {
 	$name = add_theme_page('Settings', 'Settings', 'edit_pages', 'Settings', 'thcfg_admin_page' );
 	add_action('admin_head-' . $name, 'thcfg_admin_head' );
