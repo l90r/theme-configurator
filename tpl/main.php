@@ -1,4 +1,4 @@
-<div id="thcfg_settings" class="wrap">
+<div id="thcfg_settings" class="wrap thcfg">
     <h2>Theme Settings</h2>
     
     <form method="post">

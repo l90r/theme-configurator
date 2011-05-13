@@ -17,6 +17,7 @@ class Thcfg_Admin {
     
     public function header() {
    		echo '<script type="text/javascript" src="' . plugins_url( 'js/admin.js', __FILE__ ) . '"></script>';
+    	echo '<link rel="stylesheet" href="' . plugins_url( 'style.css', __FILE__ ) . '" type="text/css">';
     }
 }
 

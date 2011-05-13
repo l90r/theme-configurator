@@ -1,17 +1,17 @@
-#thcfg_settings .inside {
+.thcfg .inside {
     padding: 15px;
 }
 
-#thcfg_settings fieldset {
+.thcfg fieldset {
     overflow:auto;
-    margin: 10px 0 20px 0;
+    margin: 10px 0 10px 0;
     background: white;
     border: 1px solid rgb(223, 223, 223);
     border-radius: 8px;
     display: block;
 }
 
-#thcfg_settings h3 {
+.thcfg h3 {
     display: block;
     background: rgb(223, 223, 223) url("../../../../wp-admin/images/gray-grad.png") repeat-x left top;
     text-shadow: white 0 1px 0;
@@ -24,7 +24,7 @@
     border-spacing: 0px;
 }
 
-#thcfg_settings .credits {
+.thcfg .credits {
     margin: 20px 0;
 }
 
@@ -52,11 +52,11 @@
     display:block;
 }
 
-#thcfg_settings li {
+.thcfg li {
     overflow: auto;
 }
 
-#thcfg_settings label {
+.thcfg label {
     font-family: "Lucida Grande",Verdana,Arial,"Bitstream Vera Sans",sans-serif;
     display: block;
     float: left;
@@ -64,7 +64,7 @@
     clear: left;
 }
 
-#thcfg_tags, #thcfg_pages, #thcfg_settings li input {
+#thcfg_tags, #thcfg_pages, .thcfg li input {
     border-width: 1px;
     border-style: solid;
     -moz-border-radius: 4px;
