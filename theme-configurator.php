@@ -38,27 +38,25 @@ function thcfg_admin_menu() {
 	add_action('admin_head-' . $name, 'thcfg_admin_head' );
 }
 
-function thcfg_admin_page() {
+function thcfg_create_controller() {
 	if($_REQUEST['thcfg_admin']) {
 		require_once(THCFG_PATH . '/Admin.php');
-		$control = new Thcfg_Admin();
+		return new Thcfg_Admin();
 	} else {
 		require_once(THCFG_PATH . '/Main.php');
-		$control = new Thcfg_Main();
+		return new Thcfg_Main();
 	}
+}
+
+function thcfg_admin_page() {
+	$control = thcfg_create_controller();
 	$control->action();
 }
 
 function thcfg_admin_head() {
 	$dir = plugin_basename(__FILE__);
-	echo '<link rel="stylesheet" href="' . plugins_url( 'style.css', __FILE__ ) . '" type="text/css">';
-	if($_REQUEST['thcfg_admin']) {
-		echo '<script type="text/javascript" src="' . plugins_url( 'js/admin.js', __FILE__ ) . '"></script>';
-	} else {
-		echo '<script type="text/javascript" src="' . plugins_url( 'js/main.js', __FILE__ ) . '"></script>';
-		echo '<script type="text/javascript" src="' . plugins_url( '3rd/farbtastic/farbtastic.js', __FILE__ ) . '"></script>';
-		echo '<link rel="stylesheet" href="' . plugins_url( '3rd/farbtastic/farbtastic.css', __FILE__ ) . '" type="text/css">';	
-	}
+	$control = thcfg_create_controller();
+	$control->header();
 }
 
 
