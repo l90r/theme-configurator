@@ -4,9 +4,11 @@ class Thcfg_Admin {
 
     private $values, $structure;
         
-    function action() {
+    function __construct() {
         $this->structure = json_decode(file_get_contents(THCFG_PATH . '/structure.json'));
-
+    }
+    
+    function action() {
         $this->display();
     }
     
@@ -16,8 +18,7 @@ class Thcfg_Admin {
     }
     
     public function header() {
-   		echo '<script type="text/javascript" src="' . plugins_url( 'js/admin.js', __FILE__ ) . '"></script>';
-    	echo '<link rel="stylesheet" href="' . plugins_url( 'style.css', __FILE__ ) . '" type="text/css">';
+        include 'tpl/admin_hdr.php';
     }
 }
 
