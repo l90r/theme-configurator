@@ -11,7 +11,7 @@
     display: block;
 }
 
-.thcfg h3 {
+.thcfg fieldset h3 {
     display: block;
     background: rgb(223, 223, 223) url("../../../../wp-admin/images/gray-grad.png") repeat-x left top;
     text-shadow: white 0 1px 0;
@@ -95,4 +95,18 @@
     background-color: #666;
     clear: none;
     margin-right: 10px;
+}
+
+.thcfg .setfooter {
+    background-color: #f1f1f1;
+    height: 15px;
+    padding: 7px 9px;
+}
+
+.thcfg th.id, .thcfg td.id {
+    width: 200px;
+}
+
+.thcfg table input {
+    width: 100%;
 }

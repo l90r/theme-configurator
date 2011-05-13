@@ -2,12 +2,22 @@
     <h2>Theme Configuration Structure</h2>
     
     <form method="post">
-        <fieldset class="colors">
-            <h3>Colors</h3>
-            <ul class="inside">
-            </ul>
-        </fieldset>
-        <a href="#" id="add-color" class="button">Add Color</a>
+        <h3>Colors</h3>
+        <table class="wp-list-table widefat fixed">
+            <thead>
+                <tr>
+                    <th class="id">ID</th>
+                    <th class="title">Title</th>                
+                </tr>
+            </thead>
+            <tbody id="thcfg_colors">
+            </tbody>
+            <tfoot>
+                <tr><th colspan="2">
+                    <a href="#" id="add-color" class="button">Add Color</a>
+                </th></tr>
+            </tfoot>
+        </table>
         
         <fieldset class="contents">
             <h3>Contents</h3>
