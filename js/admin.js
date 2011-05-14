@@ -1,8 +1,8 @@
 (function($) {
     
-    function manager(data) {
-        this.tmplId = "#thcfg_idtitle";
-        this.containerId = "#thcfg_colors";
+    function manager(data, tmplId, containerId) {
+        this.tmplId = tmplId;
+        this.containerId = containerId;
         
         this.add = function() {
             var self = this;
@@ -42,15 +42,34 @@
         }
     }
     
-    var mgr = new manager(thcfg_colors);
+    var colorMgr = new manager(thcfg_colors, '#thcfg_tpl_idtitle', '#thcfg_colors');
+    var contentMgr = new manager(thcfg_contents, '#thcfg_tpl_contents', '#thcfg_contents');
+    var imageMgr = new manager(thcfg_images, '#thcfg_tpl_idtitle', '#thcfg_images');
+    var phraseMgr = new manager(thcfg_phrases, '#thcfg_tpl_idtitle', '#thcfg_phrases');
     
-    mgr.getNew = function() {
-        return {"id": "new_option_id", "two": "An option title here"};
+    var newIdTitle = function() {
+        return {"id": "new_option_id", "title": "An option title here"};
+    };
+    
+    colorMgr.getNew = newIdTitle;
+    imageMgr.getNew = newIdTitle;
+    phraseMgr.getNew = newIdTitle;
+
+    contentMgr.getNew = function() {
+        return {"id": "new_option_id", "title": "An option title here", "type": "pagelist"};
     }
+    
 
     $(function() {
-        mgr.display();
-        $('#thcfg-add-color').click(mgr.add());
+        colorMgr.display();
+        contentMgr.display();
+        imageMgr.display();
+        phraseMgr.display();
+        $('#thcfg-add-color').click(colorMgr.add());
+        $('#thcfg-add-contents').click(contentMgr.add());
+        $('#thcfg-add-images').click(imageMgr.add());
+        $('#thcfg-add-phrases').click(contentMgr.add());
+        
         /* $('#dump').click(function() {
             $('#output').text(JSON.stringify(mgr.dump()));
         });*/

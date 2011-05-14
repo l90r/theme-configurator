@@ -20,8 +20,8 @@
         
     ],
     "contents":[
-        {"id": "mytheme_tags", "title": "Tags"},
-        {"id": "mytheme_pages", "title": "Pages"}
+        {"id": "mytheme_tags", "title": "Tags", "type": "taglist"},
+        {"id": "mytheme_pages", "title": "Pages", "type": "pagelist"}
     ],
     "phrases":[
         {"id": "mytheme_readon", "title": "Go to entire post"},
