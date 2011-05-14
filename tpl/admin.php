@@ -9,12 +9,13 @@
                     <th class="draghandle"></th>
                     <th class="id">ID</th>
                     <th class="title">Title</th>                
+                    <th class="itemrem"></th>                
                 </tr>
             </thead>
             <tbody id="thcfg_colors">
             </tbody>
             <tfoot>
-                <tr><th colspan="3">
+                <tr><th colspan="4">
                     <a href="#" id="thcfg-add-color" class="button">Add Color</a>
                 </th></tr>
             </tfoot>

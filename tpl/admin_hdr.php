@@ -1,8 +1,9 @@
 <script type="text/x-jquery-tmpl" id="thcfg_idtitle">
     <tr>
         <td class="draghandle"></td>
-        <td class="id"><input class="id" type="text" value="${id}"></</td>
-        <td class="title"><input class="title" type="text" value="${title}"></</td>
+        <td class="id"><input class="id" type="text" value="${id}"></td>
+        <td class="title"><input class="title" type="text" value="${title}"></td>
+        <td class="itemrem"><a href="#" class="itemrem">(x)</a></td>
     </tr>
 </script>
 

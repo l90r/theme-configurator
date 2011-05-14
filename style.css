@@ -111,6 +111,10 @@
     width: 18px;
 }
 
+.thcfg td.itemrem, .thcfg th.itemrem {
+    width: 40px;
+}
+
 .thcfg th.id, .thcfg td.id {
     width: 200px;
 }

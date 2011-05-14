@@ -19,10 +19,11 @@
         this.remove = function() {
             var self = this;
             return function() {
-                var li = $(this).parent();
-                var index = li.parent().children().index(li);
+                var row = $(this).closest('tr');
+                var index = row.parent().children().index(row);
                 data.splice(index, 1);
-                li.remove();
+                row.hide('fast', function() { $(this).remove(); });
+                return false;
             }
         }
         
@@ -33,7 +34,7 @@
         this.display = function() {
             $(this.tmplId).tmpl(data).appendTo(this.containerId);
             $(this.containerId).sortable({ handle: '.draghandle' });
-            $('.remove').live('click', this.remove());
+            $(this.containerId + ' .itemrem').live('click', this.remove());
         }
         
         this.dump = function() {
