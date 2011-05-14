@@ -8,7 +8,7 @@
             var self = this;
             return function() {
                 var item = self.getNew();
-                $(this.tmplId).tmpl(item).appendTo('#list1');
+                $(self.tmplId).tmpl(item).appendTo(self.containerId);
                 var li = $(this).parent();
                 var index = li.parent().children().index(li);
                 data.splice(index, 0, item);
@@ -27,7 +27,7 @@
         }
         
         this.getNew = function() {
-            return {};
+            return { "id": "newid", "title": "New Title" };
         }
         
         this.display = function() {
@@ -49,7 +49,7 @@
 
     $(function() {
         mgr.display();
-        $('#add-color').click(mgr.add());
+        $('#thcfg-add-color').click(mgr.add());
         /* $('#dump').click(function() {
             $('#output').text(JSON.stringify(mgr.dump()));
         });*/
