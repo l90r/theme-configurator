@@ -36,7 +36,7 @@
             </tbody>
             <tfoot>
                 <tr><th colspan="5">
-                    <a href="#" id="thcfg-add-contents" class="button">Add Content Links</a>
+                    <a href="#" id="thcfg-add-content" class="button">Add Content Links</a>
                 </th></tr>
             </tfoot>
         </table>

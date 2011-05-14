@@ -66,9 +66,9 @@
         imageMgr.display();
         phraseMgr.display();
         $('#thcfg-add-color').click(colorMgr.add());
-        $('#thcfg-add-contents').click(contentMgr.add());
-        $('#thcfg-add-images').click(imageMgr.add());
-        $('#thcfg-add-phrases').click(contentMgr.add());
+        $('#thcfg-add-content').click(contentMgr.add());
+        $('#thcfg-add-image').click(imageMgr.add());
+        $('#thcfg-add-phrase').click(phraseMgr.add());
         
         /* $('#dump').click(function() {
             $('#output').text(JSON.stringify(mgr.dump()));
