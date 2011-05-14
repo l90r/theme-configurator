@@ -37,6 +37,7 @@ define('THCFG_URL', plugins_url() . '/' . basename(dirname(__FILE__)));
 function thcfg_admin_menu() {
 	$name = add_theme_page('Settings', 'Settings', 'edit_pages', 'Settings', 'thcfg_admin_page' );
 	add_action('admin_head-' . $name, 'thcfg_admin_head' );
+    wp_enqueue_script( 'jquery-ui-sortable' );
 }
 
 function thcfg_create_controller() {

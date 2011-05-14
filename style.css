@@ -103,6 +103,14 @@
     padding: 7px 9px;
 }
 
+.thcfg td.draghandle {
+    background: #e8e8e8 url('img/grip.png');
+}
+
+.thcfg th.draghandle, .thcfg td.draghandle {
+    width: 20px;
+}
+
 .thcfg th.id, .thcfg td.id {
     width: 200px;
 }

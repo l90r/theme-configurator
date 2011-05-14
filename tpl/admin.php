@@ -6,6 +6,7 @@
         <table class="wp-list-table widefat fixed">
             <thead>
                 <tr>
+                    <th class="draghandle"></th>
                     <th class="id">ID</th>
                     <th class="title">Title</th>                
                 </tr>
@@ -13,8 +14,8 @@
             <tbody id="thcfg_colors">
             </tbody>
             <tfoot>
-                <tr><th colspan="2">
-                    <a href="#" id="add-color" class="button">Add Color</a>
+                <tr><th colspan="3">
+                    <a href="#" id="thcfg-add-color" class="button">Add Color</a>
                 </th></tr>
             </tfoot>
         </table>
@@ -24,14 +25,14 @@
             <ul class="inside">
             </ul>
         </fieldset>
-        <a href="#" id="add-contents" class="button">Add Content Links</a>
+        <a href="#" id="thcfg-add-contents" class="button">Add Content Links</a>
     
         <fieldset class="images">
             <h3>Images</h3>
             <ul class="inside">
             </ul>
         </fieldset>
-        <a href="#" id="add-image" class="button">Add Image</a>
+        <a href="#" id="thcfg-add-image" class="button">Add Image</a>
         
         <fieldset class="phrases">
             <h3>Text Phrases</h3>
