@@ -3,8 +3,31 @@
     function update_color(value, id) {
         $('#thcfg_sample_' + id).css('background-color', value);
     }
+
+    function collect() {
+        var data = {};
+        $('.thcfg input.colorvalue,.thcfg input.phrasevalue,.thcfg input.contentvalue,.thcfg input.imagevalue')
+            .each(function(idx, elem) {
+            var obj = $(elem);
+            data[obj.attr('name')] = obj.val();
+        });
+        return data;
+    }
     
     $(function() {
+        $('#thcfg_form').submit(function() {
+            var code = JSON.stringify(collect());
+            if($('#thcfg_saveas :selected').val() == 'see') {
+                alert(code);
+                return false;
+            }
+            return true;
+        });
+        
+        $('#thcfg_showadvanced').click(function() {
+            $('#thcfg_advanced').toggle();
+            return false;
+        });
         $('#thcfg_settings input.colorvalue').each(function() {
             var id = $(this).attr('id').replace(/thcfg_col_/,'');
             $(this).change(function() {

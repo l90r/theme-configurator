@@ -7,7 +7,7 @@
     </p></div>
 <?php endif ?>
 
-    <form method="post">
+    <form id="thcfg_form" method="post">
         <fieldset class="colors">
             <h3>Color Scheme</h3>
             <ul class="selector">
@@ -22,7 +22,7 @@
 <?php $first = true; foreach($structure->colors as $item) : $id = $item->id; $title = htmlspecialchars($item->title) ?>
                 <li class="colorvalue colorvalue_<?php echo $id ?><?php if($first) { echo ' selected'; $first=false; } ?>">
                     <label for="thcfg_col_<?php echo "{$id}" ?>">Color code</label>
-                    <input type="text" class="colorvalue" id="thcfg_col_<?php echo "{$id}" ?>" name="colors[<?php echo $id ?>]>" value="<?php echo htmlspecialchars($colors[$id]) ?>">
+                    <input type="text" class="colorvalue" id="thcfg_col_<?php echo $id ?>" name="<?php echo $id ?>" value="<?php echo htmlspecialchars($colors[$id]) ?>">
                 </li>
 <?php endforeach ?>
             </ul>
@@ -34,7 +34,7 @@
 <?php foreach($structure->contents as $item) : $id = $item->id; $title = htmlspecialchars($item->title) ?>
                 <li>
                     <label for="thcfg_tags"><?php echo $title ?></label>
-                    <input type="text" id="thcfg_content_<?php echo $id ?>" name="thcfg_content_<?php echo $id ?>" value="<?php echo htmlspecialchars(implode(', ', $contents[$id])) ?>">
+                    <input class="contentvalue" type="text" id="thcfg_content_<?php echo $id ?>" name="<?php echo $id ?>" value="<?php echo htmlspecialchars(implode(', ', $contents[$id])) ?>">
                 </li>
 <?php endforeach ?>
             </ul>
@@ -46,7 +46,7 @@
 <?php foreach($structure->images as $item) : $id = $item->id; $title = htmlspecialchars($item->title) ?>
                 <li>
                     <label for="thcfg_img_<?php echo $id ?>"><?php echo $title ?></label>
-                    <input type="text" id="thcfg_img_<?php echo $id ?>" name="img['<?php echo $id ?>']" value="<?php echo htmlspecialchars($images[$id]) ?>">
+                    <input class="imagevalue" type="text" id="thcfg_img_<?php echo $id ?>" name="<?php echo $id ?>" value="<?php echo htmlspecialchars($images[$id]) ?>">
                 </li>
 <?php endforeach; ?>
             </ul>
@@ -58,13 +58,22 @@
 <?php foreach($structure->phrases as $item) : $id = $item->id; $title = htmlspecialchars($item->title) ?>
                 <li>
                     <label for="thcfg_txt_<?php echo "{$id}" ?>"><?php echo $title ?></label>
-                    <input type="text" id="thcfg_txt_<?php echo $id ?>" name="thcfg_txt[<?php echo $id ?>]" value="<?php echo htmlspecialchars($phrases[$id]) ?>">
+                    <input class="phrasevalue" type="text" id="thcfg_txt_<?php echo $id ?>" name="<?php echo $id ?>" value="<?php echo htmlspecialchars($phrases[$id]) ?>">
                 </li>
 <?php endforeach ?>
             </ul>
         </fieldset>
-        <div class="thcfg_navi">
-            <a id="thcfg_navi_structure" href="<?php echo $uri_admin ?>">Change configuration structure &raquo;</a>
+        <div>
+            <a id="thcfg_showadvanced" href="#">Advanced options</a>
+        </div>
+        <div id="thcfg_advanced" style="display:none">
+            Go to <a href="<?php echo $uri_admin ?>">Theme Configuration Structure page &raquo;</a>
+            <label class="saveas"><select id="thcfg_saveas" name="saveas">
+                <option value="db" selected="selected">Save to Database</option>
+                <option value="theme">Save as file to current theme</option>
+                <option value="see">See code</option>
+            </select></label>
+        </div>
         </div>
         <input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes">
     </form>

@@ -123,8 +123,8 @@
     width: 100%;
 }
 
-.thcfg_navi {
-    width: 300px;
-    text-align: right;
-    float: right;
+.thcfg .saveas {
+    display: block;
+    clear: both;
+    float: none;
 }

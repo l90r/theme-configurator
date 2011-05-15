@@ -85,16 +85,15 @@
             </tfoot>
         </table>
 
-        <div class="thcfg_navi">
-            <a id="thcfg_navi_settings" href="<?php echo $uri_main ?>">&laquo; Back to settings</a>
-        </div>
-        <div id="thcfg_savearea">
-            <label class="saveas"><select id="thcfg_saveas">
+        <div id="thcfg_advanced">
+            &laquo; Go back to <a href="<?php echo $uri_main ?>">Theme Settings page</a>
+            <label class="saveas"><select id="thcfg_saveas" name="saveas">
                 <option value="db" selected="selected">Save to Database</option>
                 <option value="theme">Save as file to current theme</option>
                 <option value="see">See code</option>
             </select></label>
-            <input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes">
+        </div>
+              <input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes">
         </div>
     </form>
     <div class="credits">
