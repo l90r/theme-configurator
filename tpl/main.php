@@ -1,6 +1,12 @@
 <div id="thcfg_settings" class="wrap thcfg">
     <h2>Theme Settings</h2>
     
+<?php if($msg) : ?>
+    <div id="message" class="updated"><p>
+        <?php echo htmlspecialchars($msg) ?>
+    </p></div>
+<?php endif ?>
+
     <form method="post">
         <fieldset class="colors">
             <h3>Color Scheme</h3>
@@ -57,15 +63,14 @@
 <?php endforeach ?>
             </ul>
         </fieldset>
+        <div class="thcfg_navi">
+            <a id="thcfg_navi_structure" href="<?php echo $uri_admin ?>">Change configuration structure &raquo;</a>
+        </div>
         <input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes">
     </form>
 
     <div class="credits">
-        The Theme Configurator plugin has been created by hacker and jazz pianist Igor Prochazka
-        for his own personal blog at <a href="http://www.l90r.com/">www.l90r.com</a><br>
-        For more information and feedback please go to the
-        official plugin page at <a href="http://www.l90r.com/posts/wordpress-theme-configurator">
-        www.l90r.com/posts/wordpress-theme-configurator</a>.<br/>
+        <a href="http://www.l90r.com/posts/wordpress-theme-configurator">Theme Configurator</a> plugin by hacker and jazz pianist <a href="http://www.l90r.com/">Igor Prochazka</a>
     </div>
     
 </div>

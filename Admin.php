@@ -1,5 +1,7 @@
 <?php
 
+require_once('utils.php');
+
 class Thcfg_Admin {
 
     private $values, $structure;
@@ -13,7 +15,8 @@ class Thcfg_Admin {
     }
     
     private function display() {
-        $structure = $this->structure;        
+        $structure = $this->structure;
+        $uri_main = thcfg_get_uri(false);
         include('tpl/admin.php');
     }
     

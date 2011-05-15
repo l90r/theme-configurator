@@ -1,6 +1,12 @@
 <div id="thcfg_admin" class="wrap thcfg">
     <h2>Theme Configuration Structure</h2>
     
+<?php if($msg) : ?>
+    <div id="message" class="updated"><p>
+        <?php echo htmlspecialchars($msg) ?>
+    </p></div>
+<?php endif ?>
+
     <form id="thcfg_form" method="post">
         <h3>Colors</h3>
         <table class="wp-list-table widefat fixed">
@@ -79,6 +85,9 @@
             </tfoot>
         </table>
 
+        <div class="thcfg_navi">
+            <a id="thcfg_navi_settings" href="<?php echo $uri_main ?>">&laquo; Back to settings</a>
+        </div>
         <div id="thcfg_savearea">
             <label class="saveas"><select id="thcfg_saveas">
                 <option value="db" selected="selected">Save to Database</option>
@@ -88,6 +97,9 @@
             <input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes">
         </div>
     </form>
+    <div class="credits">
+        See information on how to make your theme configurable <a href="http://www.l90r.com/posts/wordpress-theme-configurator">here</a>
+    </div>
     
 </div>
 

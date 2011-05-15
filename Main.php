@@ -1,5 +1,7 @@
 <?php
 
+require_once('utils.php');
+
 class Thcfg_Main {
 
     private $values, $structure;
@@ -20,6 +22,8 @@ class Thcfg_Main {
         $contents = $this->values['contents'];
         $colors = $this->values['colors'];
         
+        $uri_admin = thcfg_get_uri(true);
+
         include('tpl/main.php');
 
     }
