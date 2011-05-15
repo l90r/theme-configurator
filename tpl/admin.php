@@ -1,7 +1,7 @@
 <div id="thcfg_admin" class="wrap thcfg">
     <h2>Theme Configuration Structure</h2>
     
-    <form method="post">
+    <form id="thcfg_form" method="post">
         <h3>Colors</h3>
         <table class="wp-list-table widefat fixed">
             <thead>
@@ -79,7 +79,14 @@
             </tfoot>
         </table>
 
-        <input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes">
+        <div id="thcfg_savearea">
+            <label class="saveas"><select id="thcfg_saveas">
+                <option value="db" selected="selected">Save to Database</option>
+                <option value="theme">Save as file to current theme</option>
+                <option value="see">See code</option>
+            </select></label>
+            <input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes">
+        </div>
     </form>
     
 </div>

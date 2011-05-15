@@ -20,16 +20,14 @@
             var self = this;
             return function() {
                 var row = $(this).closest('tr');
-                var index = row.parent().children().index(row);
-                data.splice(index, 1);
                 row.hide('fast', function() { $(this).remove(); });
                 return false;
             }
         }
         
         this.getNew = function() {
-            return { "id": "newid", "title": "New Title" };
-        }
+            return {"id": "new_option_id", "title": "An option title here"};
+        };
         
         this.display = function() {
             $(this.tmplId).tmpl(data).appendTo(this.containerId);
@@ -37,8 +35,22 @@
             $(this.containerId + ' .itemrem').live('click', this.remove());
         }
         
+        this.collect = function(row) {
+            var item = {};
+            var contents = row.contents();
+            item.id = row.find('input.id').val();
+            item.title = row.find('input.title').val();
+            return item;
+        }
+        
         this.dump = function() {
-            return data;
+            var self = this;
+            var output = [];
+            $(this.containerId + ' tr').each(function(idx, elem) {
+                output[idx] = self.collect($(elem));
+            })
+            
+            return output;
         }
     }
     
@@ -47,14 +59,6 @@
     var imageMgr = new manager(thcfg_images, '#thcfg_tpl_idtitle', '#thcfg_images');
     var phraseMgr = new manager(thcfg_phrases, '#thcfg_tpl_idtitle', '#thcfg_phrases');
     
-    var newIdTitle = function() {
-        return {"id": "new_option_id", "title": "An option title here"};
-    };
-    
-    colorMgr.getNew = newIdTitle;
-    imageMgr.getNew = newIdTitle;
-    phraseMgr.getNew = newIdTitle;
-
     contentMgr.getNew = function() {
         return {"id": "new_option_id", "title": "An option title here", "type": "pagelist"};
     }
@@ -70,10 +74,18 @@
         $('#thcfg-add-image').click(imageMgr.add());
         $('#thcfg-add-phrase').click(phraseMgr.add());
         
-        /* $('#dump').click(function() {
-            $('#output').text(JSON.stringify(mgr.dump()));
-        });*/
-            
+        $('#thcfg_form').submit(function() {
+            var code = JSON.stringify({
+                "colors": colorMgr.dump(),
+                "contents": contentMgr.dump(),
+                "images": imageMgr.dump(),
+                "phrases": phraseMgr.dump()
+            });
+            if($('#thcfg_saveas option:selected').val() == 'see') {
+                alert(code);
+                return false;
+            }
+        });
     })
     
 })(jQuery);
