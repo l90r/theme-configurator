@@ -1,26 +1,24 @@
 <?php
 
-require_once('utils.php');
+require_once('Page.php');
 
-class Thcfg_Admin {
+class Thcfg_Admin extends Thcfg_Page {
 
-    private $values, $structure;
-        
-    function __construct() {
+    function Thcfg_Admin() {
+    }
+    
+    function load() {
         $this->structure = json_decode(file_get_contents(THCFG_PATH . '/structure.json'));
     }
     
-    function action() {
-        $this->display();
-    }
-    
-    private function display() {
+    function display() {
         $structure = $this->structure;
         $uri_main = thcfg_get_uri(false);
+        $msg = $this->msg;
         include('tpl/admin.php');
     }
     
-    public function header() {
+    function header() {
         include 'tpl/admin_hdr.php';
     }
 }
