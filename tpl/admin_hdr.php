@@ -13,7 +13,7 @@
         <td class="id"><input class="id" type="text" value="${id}"></td>
         <td class="title"><input class="title" type="text" value="${title}"></td>
         <td class="type">
-            <select id="${type}">
+            <select class="type">
                 <option value="post" {{if type=='post'}}selected="selected"{{/if}} >Post</option>
                 <option value="page" {{if type=='page'}}selected="selected"{{/if}}>Page</option>
                 <option value="tag" {{if type=='tag'}}selected="selected"{{/if}}>Tag</option>

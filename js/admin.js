@@ -37,7 +37,6 @@
         
         this.collect = function(row) {
             var item = {};
-            var contents = row.contents();
             item.id = row.find('input.id').val();
             item.title = row.find('input.title').val();
             return item;
@@ -63,6 +62,13 @@
         return {"id": "new_option_id", "title": "An option title here", "type": "pagelist"};
     }
     
+    contentMgr.collect = function(row) {
+        var item = {};
+        item.id = row.find('input.id').val();
+        item.title = row.find('input.title').val();
+        item.type = row.find('select.type :selected').val();
+        return item;
+    }
 
     $(function() {
         colorMgr.display();
@@ -85,6 +91,7 @@
                 alert(code);
                 return false;
             }
+            return true;
         });
     })
     
