@@ -30,6 +30,7 @@ Author URI: http://www.l90r.com/
 /* register hooks */
 
 add_action('admin_menu', 'thcfg_admin_menu' );
+add_action('admin_init', 'thcfg_admin_init');
 
 define('THCFG_PATH', dirname(__FILE__));
 define('THCFG_URL', plugins_url() . '/' . basename(dirname(__FILE__)));
@@ -38,6 +39,17 @@ function thcfg_admin_menu() {
 	$name = add_theme_page('Settings', 'Settings', 'edit_pages', 'Settings', 'thcfg_admin_page' );
 	add_action('admin_head-' . $name, 'thcfg_admin_head' );
     wp_enqueue_script( 'jquery-ui-sortable' );
+}
+
+function thcfg_admin_init() {
+ 	add_settings_field('thcfg_advanced', 'Theme Configurator Advanced Mode', 'thcfg_settings_cb', 'general');
+ 	register_setting('general','thcfg_advanced');
+}
+
+function thcfg_settings_cb() {
+	echo '<input name="thcfg_advanced" id="thcfg_advanced" type="checkbox" value="1" class="code" '
+	. checked( 1, get_option('thcfg_advanced'), false ) . ' /> Show advanced Theme Configurator options (for theme developers)';
+	
 }
 
 function thcfg_create_controller() {
