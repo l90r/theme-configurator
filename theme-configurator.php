@@ -31,14 +31,27 @@ Author URI: http://www.l90r.com/
 
 add_action('admin_menu', 'thcfg_admin_menu' );
 add_action('admin_init', 'thcfg_admin_init');
+add_action('admin_enqueue_scripts', 'thcfg_enqueue');
 
 define('THCFG_PATH', dirname(__FILE__));
 define('THCFG_URL', plugins_url() . '/' . basename(dirname(__FILE__)));
 
+global $thcfg_pages;
+
 function thcfg_admin_menu() {
+	global $thcfg_pages;
+	
 	$name = add_theme_page('Settings', 'Settings', 'edit_pages', 'Settings', 'thcfg_admin_page' );
 	add_action('admin_head-' . $name, 'thcfg_admin_head' );
-    wp_enqueue_script( 'jquery-ui-sortable' );
+	$thcfg_pages[] = $name;
+}
+
+function thcfg_enqueue($hook) {
+	global $thcfg_pages;
+
+	if(in_array($hook, $thcfg_pages)) {
+	    wp_enqueue_script( 'jquery-ui-sortable' );
+	}
 }
 
 function thcfg_admin_init() {
