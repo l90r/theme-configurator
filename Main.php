@@ -45,7 +45,7 @@ class Thcfg_Main extends Thcfg_Page {
         return false !== file_put_contents($filename, json_encode($data));
     }
     
-    function display() {
+    function body() {
     
         $structure = $this->structure;
         
@@ -59,6 +59,25 @@ class Thcfg_Main extends Thcfg_Page {
         $msg = $this->msg;
         include('tpl/main.php');
 
+    }
+
+    function top() {
+        $heading = 'Theme Settings';
+        include('tpl/maintop.php');
+    }
+    
+    function bottom() {
+        include('tpl/mainbottom.php');
+    }
+    
+    function display() {
+        $this->top();
+        $this->body();
+        $this->bottom();
+    }
+    
+    function queue() {
+        
     }
     
     function header() {

@@ -1,13 +1,3 @@
-<div id="thcfg_settings" class="wrap thcfg">
-    <h2>Theme Settings</h2>
-    
-<?php if($msg) : ?>
-    <div id="message" class="updated"><p>
-        <?php echo htmlspecialchars($msg) ?>
-    </p></div>
-<?php endif ?>
-
-    <form id="thcfg_form" method="post">
         <fieldset class="colors">
             <h3>Color Scheme</h3>
             <ul class="selector">
@@ -75,13 +65,3 @@
             </select></label>
         </div>
         </div>
-        <input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes">
-    </form>
-
-    <div class="credits">
-        <a href="http://www.l90r.com/posts/wordpress-theme-configurator">Theme Configurator</a> plugin by hacker and jazz pianist <a href="http://www.l90r.com/">Igor Prochazka</a>
-    </div>
-    
-</div>
-
-
