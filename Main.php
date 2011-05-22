@@ -77,14 +77,14 @@ class Thcfg_Main extends Thcfg_Page {
     }
     
     function queue() {
-        
+        wp_enqueue_style( 'farbtastic' );
+        wp_enqueue_script( 'farbtastic' );
+        wp_register_script( 'thcfg_main', plugins_url( 'js/main.js', __FILE__ ), array('jquery', 'farbtastic'));
+   		wp_enqueue_script( 'thcfg_main' );
+        wp_enqueue_style( 'thcfg_style', plugins_url( 'style.css', __FILE__ ));
     }
     
     function header() {
-    	echo '<link rel="stylesheet" href="' . plugins_url( 'style.css', __FILE__ ) . '" type="text/css">';
-   		echo '<script type="text/javascript" src="' . plugins_url( 'js/main.js', __FILE__ ) . '"></script>';
-		echo '<script type="text/javascript" src="' . plugins_url( '3rd/farbtastic/farbtastic.js', __FILE__ ) . '"></script>';
-		echo '<link rel="stylesheet" href="' . plugins_url( '3rd/farbtastic/farbtastic.css', __FILE__ ) . '" type="text/css">';	
     }
 }
 

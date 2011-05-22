@@ -21,5 +21,9 @@ class Thcfg_Admin extends Thcfg_Page {
     function header() {
         include 'tpl/admin_hdr.php';
     }
+    
+    function queue() {
+   		wp_enqueue_script( 'jquery-ui-sortable' );
+    }
 }
 

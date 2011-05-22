@@ -50,7 +50,8 @@ function thcfg_enqueue($hook) {
 	global $thcfg_pages;
 
 	if(in_array($hook, $thcfg_pages)) {
-	    wp_enqueue_script( 'jquery-ui-sortable' );
+		$control = thcfg_create_controller();
+	    $control->queue();
 	}
 }
 
@@ -66,13 +67,16 @@ function thcfg_settings_cb() {
 }
 
 function thcfg_create_controller() {
-	if($_REQUEST['thcfg_admin']) {
-		require_once(THCFG_PATH . '/Admin.php');
-		return new Thcfg_Admin();
-	} else {
-		require_once(THCFG_PATH . '/Main.php');
-		return new Thcfg_Main();
+	if(!$thcfg_controller) {
+		if($_REQUEST['thcfg_admin']) {
+			require_once(THCFG_PATH . '/Admin.php');
+			$thcfg_controller = new Thcfg_Admin();
+		} else {
+			require_once(THCFG_PATH . '/Main.php');
+			$thcfg_controller = new Thcfg_Main();
+		}
 	}
+	return $thcfg_controller;
 }
 
 function thcfg_admin_page() {
