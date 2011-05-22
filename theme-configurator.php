@@ -41,16 +41,28 @@ global $thcfg_pages;
 function thcfg_admin_menu() {
 	global $thcfg_pages;
 	
-	$name = add_theme_page('Colors', 'Colors', 'edit_theme_options', 'Colors', 'thcfg_admin_page' );
-	add_action('admin_head-' . $name, 'thcfg_admin_head' );
-	$thcfg_pages[] = $name;
+	$titles = array(
+		'colors' => 'Colors',
+		'images' => 'Images',
+		'contents' => 'Contents',
+		'phrase' => 'Phrases'
+	);
+	if(get_option('thcfg_advanced', false)) {
+		$titles['admin'] = 'Theme Configurator';
+	}
+	
+	foreach($titles as $id => $title) {
+		$handle = add_theme_page($title, $title, 'edit_theme_options', $title, 'thcfg_page_' . $id );
+		$thcfg_pages[$id] = $handle;
+		add_action('admin_head-' . $handle, 'thcfg_head_' . $id );
+	}
 }
 
 function thcfg_enqueue($hook) {
 	global $thcfg_pages;
 
-	if(in_array($hook, $thcfg_pages)) {
-		$control = thcfg_create_controller();
+	if($id = array_search($hook, $thcfg_pages)) {
+		$control = thcfg_controller($id);
 	    $control->queue();
 	}
 }
@@ -66,29 +78,27 @@ function thcfg_settings_cb() {
 	
 }
 
-function thcfg_create_controller() {
+function thcfg_controller($id) {
 	if(!$thcfg_controller) {
-		if($_REQUEST['thcfg_admin']) {
-			require_once(THCFG_PATH . '/Admin.php');
-			$thcfg_controller = new Thcfg_Admin();
-		} else {
-			require_once(THCFG_PATH . '/Colors.php');
-			$thcfg_controller = new Thcfg_Colors();
+		switch($id) {
+			case 'colors':
+				require_once(THCFG_PATH . '/Colors.php');
+				$thcfg_controller = new Thcfg_Colors();
+				break;
+			case 'admin':
+				require_once(THCFG_PATH . '/Admin.php');
+				$thcfg_controller = new Thcfg_Admin();
+				break;
 		}
 	}
 	return $thcfg_controller;
 }
 
-function thcfg_admin_page() {
-	$control = thcfg_create_controller();
-	$control->action();
-}
+function thcfg_page_admin() { $control = thcfg_controller('admin')->action(); }
+function thcfg_page_colors() { $control = thcfg_controller('colors')->action(); }
 
-function thcfg_admin_head() {
-	$dir = plugin_basename(__FILE__);
-	$control = thcfg_create_controller();
-	$control->header();
-}
+function thcfg_head_admin() { $control = thcfg_controller('admin')->header(); }
+function thcfg_head_colors() { $control = thcfg_controller('colors')->header(); }
 
 
 ?>
