@@ -2,11 +2,11 @@
 
 require_once('Page.php');
 
-class Thcfg_Main extends Thcfg_Page {
+class Thcfg_Colors extends Thcfg_Page {
 
     var $values, $structure;
 
-    function Thcfg_Main() {
+    function Thcfg_Colors() {
     }
     
     function load() {
@@ -57,12 +57,12 @@ class Thcfg_Main extends Thcfg_Page {
         $uri_admin = thcfg_get_uri(true);
 
         $msg = $this->msg;
-        include('tpl/main.php');
+        include('tpl/colors.php');
 
     }
 
     function top() {
-        $heading = 'Theme Settings';
+        $heading = 'Theme Colors';
         include('tpl/maintop.php');
     }
     

@@ -41,7 +41,7 @@ global $thcfg_pages;
 function thcfg_admin_menu() {
 	global $thcfg_pages;
 	
-	$name = add_theme_page('Settings', 'Settings', 'edit_pages', 'Settings', 'thcfg_admin_page' );
+	$name = add_theme_page('Colors', 'Colors', 'edit_theme_options', 'Colors', 'thcfg_admin_page' );
 	add_action('admin_head-' . $name, 'thcfg_admin_head' );
 	$thcfg_pages[] = $name;
 }
@@ -72,8 +72,8 @@ function thcfg_create_controller() {
 			require_once(THCFG_PATH . '/Admin.php');
 			$thcfg_controller = new Thcfg_Admin();
 		} else {
-			require_once(THCFG_PATH . '/Main.php');
-			$thcfg_controller = new Thcfg_Main();
+			require_once(THCFG_PATH . '/Colors.php');
+			$thcfg_controller = new Thcfg_Colors();
 		}
 	}
 	return $thcfg_controller;
