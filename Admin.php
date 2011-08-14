@@ -12,8 +12,7 @@ class Thcfg_Admin extends Thcfg_Page {
     }
     
     function display() {
-        $structure = $this->structure;
-        $uri_main = thcfg_get_uri(false);
+		$colors = array();
         $msg = $this->msg;
         include('tpl/admin.php');
     }

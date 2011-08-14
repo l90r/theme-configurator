@@ -1,104 +1,81 @@
 <div id="thcfg_admin" class="wrap thcfg">
-    <h2>Theme Configuration Structure</h2>
+<h2>Theme Configurator</h2>
     
 <?php if($msg) : ?>
-    <div id="message" class="updated"><p>
-        <?php echo htmlspecialchars($msg) ?>
-    </p></div>
+<div id="message" class="updated"><p>
+    <?php echo htmlspecialchars($msg) ?>
+</p></div>
 <?php endif ?>
 
-    <form id="thcfg_form" method="post">
-        <h3>Colors</h3>
-        <table class="wp-list-table widefat fixed">
-            <thead>
-                <tr>
-                    <th class="draghandle"></th>
-                    <th class="id">ID</th>
-                    <th class="title">Title</th>                
-                    <th class="itemrem"></th>                
-                </tr>
-            </thead>
-            <tbody id="thcfg_colors">
-            </tbody>
-            <tfoot>
-                <tr><th colspan="4">
-                    <a href="#" id="thcfg-add-color" class="button">Add Color</a>
-                </th></tr>
-            </tfoot>
-        </table>
-        
-        <h3>Contents</h3>
-        <table class="wp-list-table widefat fixed">
-            <thead>
-                <tr>
-                    <th class="draghandle"></th>
-                    <th class="id">ID</th>
-                    <th class="title">Title</th>                
-                    <th class="type">Type</th>                
-                    <th class="itemrem"></th>                
-                </tr>
-            </thead>
-            <tbody id="thcfg_contents">
-            </tbody>
-            <tfoot>
-                <tr><th colspan="5">
-                    <a href="#" id="thcfg-add-content" class="button">Add Content Links</a>
-                </th></tr>
-            </tfoot>
-        </table>
-    
-        <h3>Images</h3>
-        <table class="wp-list-table widefat fixed">
-            <thead>
-                <tr>
-                    <th class="draghandle"></th>
-                    <th class="id">ID</th>
-                    <th class="title">Title</th>                
-                    <th class="itemrem"></th>                
-                </tr>
-            </thead>
-            <tbody id="thcfg_images">
-            </tbody>
-            <tfoot>
-                <tr><th colspan="4">
-                    <a href="#" id="thcfg-add-image" class="button">Add Image</a>
-                </th></tr>
-            </tfoot>
-        </table>
-        
-        <h3>Text Phrases</h3>
-        <table class="wp-list-table widefat fixed">
-            <thead>
-                <tr>
-                    <th class="draghandle"></th>
-                    <th class="id">ID</th>
-                    <th class="title">Title</th>                
-                    <th class="itemrem"></th>                
-                </tr>
-            </thead>
-            <tbody id="thcfg_phrases">
-            </tbody>
-            <tfoot>
-                <tr><th colspan="4">
-                    <a href="#" id="thcfg-add-phrase" class="button">Add Phrase</a>
-                </th></tr>
-            </tfoot>
-        </table>
+<h3>Structure</h3>
 
-        <div id="thcfg_advanced">
-            &laquo; Go back to <a href="<?php echo $uri_main ?>">Theme Settings page</a>
-            <label class="saveas"><select id="thcfg_saveas" name="saveas">
-                <option value="db" selected="selected">Save to Database</option>
-                <option value="theme">Save as file to current theme</option>
-                <option value="see">See code</option>
-            </select></label>
+<form id="thcfg_structure" method="post">
+
+<ul class="thcfg_tabs">
+    <li id="thcfg_tab_colors" class="thcfg_selected"><a href="#colors">Colors</a></li>
+    <li id="thcfg_tab_dimensions"><a href="#dimensions">Dimensions</a></li>
+    <li id="thcfg_tab_text"><a href="#text">Text</a></li>
+    <li id="thcfg_tab_general"><a href="#general">General</a></li>
+</ul>
+
+<div class="thcfg_tabwrap">
+    <div id="thcfg_section_colors" class="thcfg_section">
+        <h3>Colors</h3>
+        <div class="thcfg_overview">
+            <select id="thcfg_list_colors" size="10">
+<?php foreach( $colors as $color ) : ?>
+                <option value="<?php echo $color->slug ?>"><?php echo htmlspecialchars($color->title) ?></option>
+<?php endforeach ?>
+            </select>
+            <ul class="thcfg_control">
+                <li class="thcfg_add"><a href="#">Add</a></li>
+                <li class="thcfg_edit"><a href="#">Edit</a></li>
+                <li class="thcfg_remove"><a href="#">Remove</a></li>
+                <li class="thcfg_up"><a href="#">Move Up</a></li>
+                <li class="thcfg_down"><a href="#">Move Down</a></li>
+            </ul>
         </div>
-              <input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes">
+        <div class="thcfg_edit" style="display:none">
+            <h3 class="thcfg_head_add">Add Color</h3>
+            <h3 class="thcfg_head_edit" style="display:none">Edit Color</h3>
+            <ul>
+                <li>
+                    <label for="thcfg_color_id">ID</label>
+                    <input type="text" id="thcfg_color_id"/>
+                </li>
+                <li>
+                    <label for="thcfg_color_title">ID</label>
+                    <input type="text" id="thcfg_color_title"/>
+                </li>
+            </ul>
+            <a href="#" id="thcfg_add_color" class="button">Save</a>
+            <a href="#" id="thcfg_add_cancel" class="button">Cancel</a>
         </div>
-    </form>
-    <div class="credits">
-        See information on how to make your theme configurable <a href="http://www.l90r.com/posts/wordpress-theme-configurator">here</a>
     </div>
+    <div id="thcfg_section_dimensions" class="thcfg_section" style="display:none">
+        Dimensions section - to be implemented
+    </div>
+    <div id="thcfg_section_text" class="thcfg_section" style="display:none">
+        Text section - to be implemented
+    </div>
+    <div id="thcfg_section_general" class="thcfg_section" style="display:none">
+        General section - to be implemented
+    </div>
+</div>
+
+<input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes">
+</form>
+
+<h3>Storage</h3>
+
+<form id="thcfg_storage" method="post">
+
+</form>
+
+<div class="credits">
+    More about the theme-configurator plugin <a href="http://www.l90r.com/posts/wordpress-theme-configurator">here</a>.
+    Feedback and suggestions are welcome.
+</div>
     
 </div>
 
