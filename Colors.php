@@ -36,13 +36,7 @@ class Thcfg_Colors extends Thcfg_Page {
         }
     }
     
-    function toTheme(&$filename) {
-        $filename = get_stylesheet_directory() . '/thcfg_values.json';
-        $keys = $this->getKeys();
-        foreach( $keys as $key ) {
-            $data[$key] = $_POST[$key];
-        }
-        return false !== file_put_contents($filename, json_encode($data));
+    function save() {
     }
     
     function body() {
