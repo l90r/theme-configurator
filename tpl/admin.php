@@ -20,8 +20,8 @@
 
 <div class="thcfg_tabwrap">
     <div id="thcfg_section_colors" class="thcfg_section">
-        <h3>Colors</h3>
         <div class="thcfg_overview">
+            <h3>Colors</h3>
             <select id="thcfg_list_colors" size="10">
 <?php foreach( $colors as $color ) : ?>
                 <option value="<?php echo $color->slug ?>"><?php echo htmlspecialchars($color->title) ?></option>
@@ -35,7 +35,7 @@
                 <li class="thcfg_down"><a href="#">Move Down</a></li>
             </ul>
         </div>
-        <div class="thcfg_edit" style="display:none">
+        <div class="thcfg_detail" style="display:none">
             <h3 class="thcfg_head_add">Add Color</h3>
             <h3 class="thcfg_head_edit" style="display:none">Edit Color</h3>
             <ul>
@@ -48,8 +48,8 @@
                     <input type="text" id="thcfg_color_title"/>
                 </li>
             </ul>
-            <a href="#" id="thcfg_add_color" class="button">Save</a>
-            <a href="#" id="thcfg_add_cancel" class="button">Cancel</a>
+            <a href="#" class="thcfg_save" class="button">Save</a>
+            <a href="#" class="thcfg_cancel" class="button">Cancel</a>
         </div>
     </div>
     <div id="thcfg_section_dimensions" class="thcfg_section" style="display:none">
