@@ -52,7 +52,7 @@ function thcfg_admin_menu() {
 	}
 	
 	foreach($titles as $id => $title) {
-		$handle = add_theme_page($title, $title, 'edit_theme_options', $title, 'thcfg_page_' . $id );
+		$handle = add_theme_page($title, $title, 'edit_theme_options', $id, 'thcfg_page_' . $id );
 		$thcfg_pages[$id] = $handle;
 		add_action('admin_head-' . $handle, 'thcfg_head_' . $id );
 	}
