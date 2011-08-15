@@ -4,9 +4,10 @@
 
 <script type="text/javascript">
 //<![CDATA[
-    var thcfg_colors = <?php echo json_encode($colors) ?>;
-    var thcfg_dimensions = <?php echo json_encode($dimensions) ?>;
-    var thcfg_text = <?php echo json_encode($text) ?>;
+    var thcfg_data = {};
+    thcfg_data['color'] = <?php echo json_encode($colors) ?>;
+    thcfg_data['dimension'] = <?php echo json_encode($dimensions) ?>;
+    thcfg_data['text'] = <?php echo json_encode($text) ?>;
 //]]>
 </script>
 

@@ -1,6 +1,6 @@
 (function($) {
-    var tabs = ['colors', 'dimensions', 'text', 'general'];
-    
+    var tabs = ['color', 'dimension', 'text', 'general'];
+
     function click_tab(tab) {
         for(var i=0; i<tabs.length; i++) {
             $('#thcfg_section_' + tabs[i]).toggle(tabs[i] == tab);
@@ -15,8 +15,8 @@
     }
     
     function click_add(section) {
-        $('#thcfg_color_id').val('');
-        $('#thcfg_color_title').val('');
+        $('#thcfg_' + section + '_id').val('');
+        $('#thcfg_' + section + '_title').val('');
         
         show_add(section, true);
         show_detail(section, true);
@@ -25,8 +25,8 @@
     
     function click_edit(section) {
         var idx = $('#thcfg_list_' + section + ' option:selected').index();
-        $('#thcfg_color_id').val(thcfg_colors[idx].id);
-        $('#thcfg_color_title').val(thcfg_colors[idx].title);
+        $('#thcfg_' + section + '_id').val(thcfg_data[section][idx].id);
+        $('#thcfg_' + section + '_title').val(thcfg_data[section][idx].title);
         
         show_add(section, false);
         show_detail(section, true);
@@ -34,10 +34,10 @@
     }
     
     function click_save_add(section) {
-        var id = $('#thcfg_color_id').val();
-        var title = $('#thcfg_color_title').val();
+        var id = $('#thcfg_' + section + '_id').val();
+        var title = $('#thcfg_' + section + '_title').val();
         $('#thcfg_tpl_option').tmpl({"id": id, "title": title}).appendTo('#thcfg_list_' + section);
-        thcfg_colors.push({ "id": id, "title": title });
+        thcfg_data[section].push({ "id": id, "title": title });
 
         show_detail(section, false);
         return false;
@@ -45,9 +45,9 @@
 
     function click_save_edit(section) {
         var idx = $('#thcfg_list_' + section + ' option:selected').index();
-        var id = $('#thcfg_color_id').val();
-        var title = $('#thcfg_color_title').val();
-        thcfg_colors[idx] =  { "id": id, "title": title };
+        var id = $('#thcfg_' + section + '_id').val();
+        var title = $('#thcfg_' + section + '_title').val();
+        thcfg_data[section][idx] =  { "id": id, "title": title };
         $('#thcfg_list_' + section + ' option').eq(idx).replaceWith($('#thcfg_tpl_option').tmpl({"id": id, "title": title}));
 
         show_detail(section, false);
@@ -98,12 +98,12 @@
     }
 
     function bind_events() {
-        $('#thcfg_tab_colors').click(function() { click_tab('colors') });
-        $('#thcfg_tab_dimensions').click(function() { click_tab('dimensions') });
+        $('#thcfg_tab_color').click(function() { click_tab('color') });
+        $('#thcfg_tab_dimension').click(function() { click_tab('dimension') });
         $('#thcfg_tab_text').click(function() { click_tab('text') });
         $('#thcfg_tab_general').click(function() { click_tab('general') });
-        bind_control_events('colors');
-        bind_control_events('dimensions');
+        bind_control_events('color');
+        bind_control_events('dimension');
         bind_control_events('text');
     }
     

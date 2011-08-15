@@ -1,3 +1,18 @@
+<?php
+
+function thcfg_control_div() {
+?>
+    <ul class="thcfg_control">
+        <li class="thcfg_add"><a href="#">Add</a></li>
+        <li class="thcfg_edit"><a href="#">Edit</a></li>
+        <li class="thcfg_remove"><a href="#">Remove</a></li>
+        <li class="thcfg_up"><a href="#">Move Up</a></li>
+        <li class="thcfg_down"><a href="#">Move Down</a></li>
+    </ul>
+<?php
+
+}
+?>
 <div id="thcfg_admin" class="wrap thcfg">
 <h2>Theme Configurator</h2>
     
@@ -12,17 +27,17 @@
 <form id="thcfg_structure" method="post">
 
 <ul class="thcfg_tabs">
-    <li id="thcfg_tab_colors" class="thcfg_selected"><a href="#colors">Colors</a></li>
-    <li id="thcfg_tab_dimensions"><a href="#dimensions">Dimensions</a></li>
+    <li id="thcfg_tab_color" class="thcfg_selected"><a href="#color">Colors</a></li>
+    <li id="thcfg_tab_dimension"><a href="#dimension">Dimensions</a></li>
     <li id="thcfg_tab_text"><a href="#text">Text</a></li>
     <li id="thcfg_tab_general"><a href="#general">General</a></li>
 </ul>
 
 <div class="thcfg_tabwrap">
-    <div id="thcfg_section_colors" class="thcfg_section">
+    <div id="thcfg_section_color" class="thcfg_section">
         <div class="thcfg_overview">
             <h3>Colors</h3>
-            <select id="thcfg_list_colors" size="10">
+            <select id="thcfg_list_color" size="10">
 <?php foreach( $colors as $color ) : ?>
                 <option value="<?php echo $color->slug ?>">
                     <?php echo htmlspecialchars($color->title) ?>
@@ -30,13 +45,7 @@
                 </option>
 <?php endforeach ?>
             </select>
-            <ul class="thcfg_control">
-                <li class="thcfg_add"><a href="#">Add</a></li>
-                <li class="thcfg_edit"><a href="#">Edit</a></li>
-                <li class="thcfg_remove"><a href="#">Remove</a></li>
-                <li class="thcfg_up"><a href="#">Move Up</a></li>
-                <li class="thcfg_down"><a href="#">Move Down</a></li>
-            </ul>
+            <?php thcfg_control_div() ?>
         </div>
         <div class="thcfg_detail" style="display:none">
             <h3 class="thcfg_add_only">Add Color</h3>
@@ -59,7 +68,7 @@
 
         </div>
     </div>
-    <div id="thcfg_section_dimensions" class="thcfg_section" style="display:none">
+    <div id="thcfg_section_dimension" class="thcfg_section" style="display:none">
         Dimensions section - to be implemented
     </div>
     <div id="thcfg_section_text" class="thcfg_section" style="display:none">
