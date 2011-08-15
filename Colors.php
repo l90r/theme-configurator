@@ -7,13 +7,10 @@ class Thcfg_Colors extends Thcfg_Page {
     var $values, $structure;
 
     function Thcfg_Colors() {
-    }
-    
-    function load() {
         $this->values = json_decode(file_get_contents(THCFG_PATH . '/data.json'), true);
         $this->structure = json_decode(file_get_contents(THCFG_PATH . '/structure.json'));
     }
-    
+        
     function getKeysFromArray($arr) {
         $keys = array();
         foreach( $arr as $item ) {

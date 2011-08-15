@@ -7,8 +7,6 @@ class Thcfg_Page {
     var $saver, $msg;
         
     function action() {
-        $this->load();
-
         if($_POST) {
             $this->save();
         }

@@ -4,20 +4,19 @@ require_once('Page.php');
 
 class Thcfg_Admin extends Thcfg_Page {
 
+	private $values;
+	
     function Thcfg_Admin() {
+		$this->values = array("colors" => array());
     }
-    
-    function load() {
-        $this->structure = json_decode(file_get_contents(THCFG_PATH . '/structure.json'));
-    }
-    
+    	
     function display() {
-		$colors = array();
-        $msg = $this->msg;
+		extract($this->values);
         include('tpl/admin.php');
     }
     
     function header() {
+		extract($this->values);
         include 'tpl/admin_hdr.php';
     }
     
