@@ -15,19 +15,41 @@
     }
     
     function click_add(section) {
-        show_head_add(section, true);
+        $('#thcfg_color_id').val('');
+        $('#thcfg_color_title').val('');
+        
+        show_add(section, true);
         show_detail(section, true);
         return false;
     }
     
     function click_edit(section) {
-        show_head_add(section, false);
+        var idx = $('#thcfg_list_' + section + ' option:selected').index();
+        $('#thcfg_color_id').val(thcfg_colors[idx].id);
+        $('#thcfg_color_title').val(thcfg_colors[idx].title);
+        
+        show_add(section, false);
         show_detail(section, true);
         return false;
     }
     
-    function click_save(section) {
-        alert('Save - to be implemented');
+    function click_save_add(section) {
+        var id = $('#thcfg_color_id').val();
+        var title = $('#thcfg_color_title').val();
+        $('#thcfg_tpl_option').tmpl({"id": id, "title": title}).appendTo('#thcfg_list_' + section);
+        thcfg_colors.push({ "id": id, "title": title });
+
+        show_detail(section, false);
+        return false;
+    }
+
+    function click_save_edit(section) {
+        var idx = $('#thcfg_list_' + section + ' option:selected').index();
+        var id = $('#thcfg_color_id').val();
+        var title = $('#thcfg_color_title').val();
+        thcfg_colors[idx] =  { "id": id, "title": title };
+        $('#thcfg_list_' + section + ' option').eq(idx).replaceWith($('#thcfg_tpl_option').tmpl({"id": id, "title": title}));
+
         show_detail(section, false);
         return false;
     }
@@ -42,9 +64,9 @@
         $('#thcfg_section_' + section + ' .thcfg_detail').toggle(detail);
     }
 
-    function show_head_add(section, add) {
-        $('#thcfg_section_' + section + ' .thcfg_head_add').toggle(add);
-        $('#thcfg_section_' + section + ' .thcfg_head_edit').toggle(!add);
+    function show_add(section, add) {
+        $('#thcfg_section_' + section + ' .thcfg_add_only').toggle(add);
+        $('#thcfg_section_' + section + ' .thcfg_edit_only').toggle(!add);
     }
 
     function click_remove(section) {
@@ -65,13 +87,14 @@
     
     function bind_control_events(section) {
         var control_selector = '#thcfg_section_' + section + ' ';
-        $(control_selector + '.thcfg_add').click(function() { click_add(section)});
-        $(control_selector + '.thcfg_edit').click(function() { click_edit(section)});
-        $(control_selector + '.thcfg_remove').click(function() { click_remove(section)});
-        $(control_selector + '.thcfg_up').click(function() { click_up(section)});
-        $(control_selector + '.thcfg_down').click(function() { click_down(section)});
-        $(control_selector + '.thcfg_cancel').click(function() { click_cancel(section)});
-        $(control_selector + '.thcfg_save').click(function() { click_save(section)});
+        $(control_selector + '.thcfg_add').click(function() { return click_add(section)});
+        $(control_selector + '.thcfg_edit').click(function() { return click_edit(section)});
+        $(control_selector + '.thcfg_remove').click(function() { return click_remove(section)});
+        $(control_selector + '.thcfg_up').click(function() { return click_up(section)});
+        $(control_selector + '.thcfg_down').click(function() { return click_down(section)});
+        $(control_selector + '.thcfg_cancel').click(function() { return click_cancel(section)});
+        $(control_selector + '.thcfg_save_add').click(function() { return click_save_add(section)});
+        $(control_selector + '.thcfg_save_edit').click(function() { return click_save_edit(section)});
     }
 
     function bind_events() {

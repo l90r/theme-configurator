@@ -24,7 +24,10 @@
             <h3>Colors</h3>
             <select id="thcfg_list_colors" size="10">
 <?php foreach( $colors as $color ) : ?>
-                <option value="<?php echo $color->slug ?>"><?php echo htmlspecialchars($color->title) ?></option>
+                <option value="<?php echo $color->slug ?>">
+                    <?php echo htmlspecialchars($color->title) ?>
+                    (<?php echo htmlspecialchars($color->id) ?>)
+                </option>
 <?php endforeach ?>
             </select>
             <ul class="thcfg_control">
@@ -36,20 +39,24 @@
             </ul>
         </div>
         <div class="thcfg_detail" style="display:none">
-            <h3 class="thcfg_head_add">Add Color</h3>
-            <h3 class="thcfg_head_edit" style="display:none">Edit Color</h3>
+            <h3 class="thcfg_add_only">Add Color</h3>
+            <h3 class="thcfg_edit_only" style="display:none">Edit Color</h3>
             <ul>
                 <li>
-                    <label for="thcfg_color_id">ID</label>
+                    <label for="thcfg_color_name">Name</label>
                     <input type="text" id="thcfg_color_id"/>
                 </li>
                 <li>
-                    <label for="thcfg_color_title">ID</label>
+                    <label for="thcfg_color_title">Title</label>
                     <input type="text" id="thcfg_color_title"/>
                 </li>
             </ul>
-            <a href="#" class="thcfg_save" class="button">Save</a>
-            <a href="#" class="thcfg_cancel" class="button">Cancel</a>
+            <a href="#" class="thcfg_save_add button thcfg_add_only">Save</a>
+            <a href="#" class="thcfg_save_edit button thcfg_edit_only" style="display:none">Save</a>
+            <a href="#" class="thcfg_cancel button" class="button">Cancel</a>
+        </div>
+        <div class="thcfg_data">
+
         </div>
     </div>
     <div id="thcfg_section_dimensions" class="thcfg_section" style="display:none">
