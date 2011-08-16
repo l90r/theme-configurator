@@ -7,7 +7,7 @@ class Thcfg_Admin extends Thcfg_Page {
 	private $values;
 	
     function Thcfg_Admin() {
-		$this->values = array("colors" => array());
+		$this->values = array("colors" => array(), "text" => array(), "dimensions" => array());
     }
     	
     function display() {
