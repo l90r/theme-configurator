@@ -24,7 +24,7 @@
         var selector = '#thcfg_section_' + section + ' ';
         $(selector + '.thcfg_edit,' + selector + '.thcfg_remove').toggle(idx>=0);
         $(selector + '.thcfg_up').toggle(idx>0);
-        $(selector + '.thcfg_down').toggle(idx<len-1);
+        $(selector + '.thcfg_down').toggle(idx>=0 && idx<len-1);
         return false;
     }
     
@@ -76,7 +76,7 @@
     function show_detail(section, detail) {
         $('#thcfg_section_' + section + ' .thcfg_overview').toggle(!detail);
         $('#thcfg_section_' + section + ' .thcfg_detail').toggle(detail);
-        update_selection();
+        update_selection(section);
     }
 
     function show_add(section, add) {
@@ -88,6 +88,7 @@
         var idx = get_index(section);
         thcfg_data[section].splice(idx, 1);
         $('#thcfg_list_' + section + ' option').eq(idx).remove();
+        update_selection(section);
         return false;
     }
 
