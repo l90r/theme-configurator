@@ -58,7 +58,7 @@
     }
 
     function click_save_edit(section) {
-        var idx = $('#thcfg_list_' + section + ' option:selected').index();
+        var idx = get_index(section);
         var id = $('#thcfg_' + section + '_id').val();
         var title = $('#thcfg_' + section + '_title').val();
         thcfg_data[section][idx] =  { "id": id, "title": title };
@@ -85,7 +85,9 @@
     }
 
     function click_remove(section) {
-        alert('Remove - To be implemented');
+        var idx = get_index(section);
+        thcfg_data[section].splice(idx, 1);
+        $('#thcfg_list_' + section + ' option').eq(idx).remove();
         return false;
     }
 
