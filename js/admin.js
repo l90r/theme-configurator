@@ -92,12 +92,24 @@
     }
 
     function click_up(section) {
-        alert('Up - To be implemented');
+        var idx = get_index(section);
+        var tmp = thcfg_data[section][idx];
+        thcfg_data[section][idx] = thcfg_data[section][idx-1];
+        thcfg_data[section][idx-1] = tmp;
+        var opt = $('#thcfg_list_' + section + ' option').eq(idx);
+        opt.insertBefore(opt.prev());
+        update_selection(section);
         return false;
     }
 
     function click_down(section) {
-        alert('Down - To be implemented');
+        var idx = get_index(section);
+        var tmp = thcfg_data[section][idx];
+        thcfg_data[section][idx] = thcfg_data[section][idx+1];
+        thcfg_data[section][idx+1] = tmp;
+        var opt = $('#thcfg_list_' + section + ' option').eq(idx);
+        opt.insertAfter(opt.next());
+        update_selection(section);
         return false;
     }
 
