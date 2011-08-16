@@ -1,18 +1,13 @@
-<?php
-
-function thcfg_control_div() {
-?>
+<?php function thcfg_control_div() { ?>
     <ul class="thcfg_control">
-        <li class="thcfg_add"><a href="#">Add</a></li>
-        <li class="thcfg_edit"><a href="#">Edit</a></li>
-        <li class="thcfg_remove"><a href="#">Remove</a></li>
-        <li class="thcfg_up"><a href="#">Move Up</a></li>
-        <li class="thcfg_down"><a href="#">Move Down</a></li>
+        <li class="thcfg_add"><a href="#" class="button">Add</a></li>
+        <li class="thcfg_edit"><a href="#" class="button">Edit</a></li>
+        <li class="thcfg_remove"><a href="#" class="button">Remove</a></li>
+        <li class="thcfg_up"><a href="#" class="button">Move Up</a></li>
+        <li class="thcfg_down"><a href="#" class="button">Move Down</a></li>
     </ul>
-<?php
+<?php } ?>
 
-}
-?>
 <div id="thcfg_admin" class="wrap thcfg">
 <h2>Theme Configurator</h2>
     
