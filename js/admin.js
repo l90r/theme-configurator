@@ -33,8 +33,7 @@
         }
         
         this.click_add = function() {
-            $('#thcfg_' + section + '_id').val('');
-            $('#thcfg_' + section + '_title').val('');
+            self.put_object(null);
             
             self.show_add(true);
             self.show_detail(true);
@@ -43,19 +42,32 @@
         
         this.click_edit = function() {
             var idx = get_index();
-            $('#thcfg_' + section + '_id').val(thcfg_data[section][idx].id);
-            $('#thcfg_' + section + '_title').val(thcfg_data[section][idx].title);
+            self.put_object(thcfg_data[section][idx]);
             
             self.show_add(false);
             self.show_detail(true);
             return false;
         }
         
+        this.get_object = function() {
+            return {
+                "id": $('#thcfg_' + section + '_id').val(),
+                "title": $('#thcfg_' + section + '_title').val()
+            };          
+        }
+        
+        this.put_object = function(obj) {
+            if(!obj) {
+                obj = {};
+            }
+            $('#thcfg_' + section + '_id').val(obj.id);
+            $('#thcfg_' + section + '_title').val(obj.title);
+        }
+        
         this.click_save_add = function() {
-            var id = $('#thcfg_' + section + '_id').val();
-            var title = $('#thcfg_' + section + '_title').val();
-            $('#thcfg_tpl_option').tmpl({"id": id, "title": title}).appendTo('#thcfg_list_' + section);
-            thcfg_data[section].push({ "id": id, "title": title });
+            var obj = self.get_object();
+            $('#thcfg_tpl_option').tmpl(obj).appendTo('#thcfg_list_' + section);
+            thcfg_data[section].push(obj);
     
             self.show_detail(false);
             return false;
@@ -63,10 +75,9 @@
     
         this.click_save_edit = function() {
             var idx = get_index();
-            var id = $('#thcfg_' + section + '_id').val();
-            var title = $('#thcfg_' + section + '_title').val();
-            thcfg_data[section][idx] =  { "id": id, "title": title };
-            $('#thcfg_list_' + section + ' option').eq(idx).replaceWith($('#thcfg_tpl_option').tmpl({"id": id, "title": title}));
+            var obj = self.get_object();
+            thcfg_data[section][idx] = obj;
+            $('#thcfg_list_' + section + ' option').eq(idx).replaceWith($('#thcfg_tpl_option').tmpl(obj));
     
             self.show_detail(false);
             return false;
@@ -140,12 +151,34 @@
         $('#thcfg_tab_general').click(function() { click_tab('general') });
     }
     
+    function dimensions_get_object() {
+        return {
+            "id": $('#thcfg_dimension_id').val(),
+            "title": $('#thcfg_dimension_title').val(),
+            "min": $('#thcfg_dimension_min').val(),
+            "max": $('#thcfg_dimension_max').val()
+        };          
+    }
+    
+    function dimensions_put_object(obj) {
+        if(!obj) {
+            obj = {};
+        }
+        $('#thcfg_dimension_id').val(obj.id);
+        $('#thcfg_dimension_title').val(obj.title);
+        $('#thcfg_dimension_min').val(obj.min);
+        $('#thcfg_dimension_max').val(obj.max);
+    }
+    
     function bind_events() {
         bind_tabs();
         
         var colors = new section_controller('color');
         var dimensions = new section_controller('dimension');
         var text = new section_controller('text');
+        
+        dimensions.get_object = dimensions_get_object;
+        dimensions.put_object = dimensions_put_object;
         
         colors.bind();
         dimensions.bind();

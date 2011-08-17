@@ -91,11 +91,11 @@
                 </li>
                 <li>
                     <label for="thcfg_dimension_title">Minimum</label>
-                    <input type="text" id="thcfg_dimension_minimum"/>
+                    <input type="text" id="thcfg_dimension_min"/>
                 </li>
                 <li>
                     <label for="thcfg_dimension_title">Maximum</label>
-                    <input type="text" id="thcfg_dimension_maximum"/>
+                    <input type="text" id="thcfg_dimension_max"/>
                 </li>
             </ul>
             <?php thcfg_tpl_detail_control() ?>
