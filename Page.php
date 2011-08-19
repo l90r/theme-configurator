@@ -4,21 +4,36 @@ require_once('utils.php');
 
 class Thcfg_Page {
 
-    var $saver, $msg;
+    var $saver, $msg, $data;
         
     function action() {
-        if($_POST) {
-            $this->save();
-        }
         $this->display();
+    }
+    
+    function loader() {
+        if($this->data === null) {
+            if($_POST) {
+                $this->save();
+            } else {
+                $this->load();
+            }
+        }
     }
     
     function queue() { }
     
-    function head() { }
+    function displayHead() {
+        $this->loader();
+        $this->head();
+    }
     
-    function display() { }
+    function displayBody() {
+        $this->loader();
+        $this->display();
+    }
     
+    function load() { }
+    function display() { }    
     function save() { }
     
 }

@@ -7,21 +7,34 @@ class Thcfg_Admin extends Thcfg_Page {
 	private $values;
 	
     function Thcfg_Admin() {
-		$this->values = array("colors" => array(), "text" => array(), "dimensions" => array());
     }
     	
     function display() {
-		extract($this->values);
+		$colors = $this->data->color;
+		$dimensions = $this->data->dimension;
+		$text = $this->data->text;
         include('tpl/admin.php');
     }
+	
+	function load() {
+		$this->data = json_decode(thcfg_get_option(
+			'thcfg_structure',
+			array("color" => array(), "text" => array(), "dimension" => array())
+		));		
+	}
     
-    function header() {
-		extract($this->values);
+    function head() {
+		$structure = $this->data;
         include 'tpl/admin_hdr.php';
     }
     
     function queue() {
    		wp_enqueue_script( 'jquery-ui-sortable' );
     }
+	
+	function save() {
+		$this->data = json_decode(thcfg_request('structure'));
+		thcfg_add_option('thcfg_structure', json_encode($this->data));
+	}
 }
 

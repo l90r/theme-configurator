@@ -42,7 +42,7 @@
         
         this.click_edit = function() {
             var idx = get_index();
-            self.put_object(thcfg_data[section][idx]);
+            self.put_object(thcfg_structure[section][idx]);
             
             self.show_add(false);
             self.show_detail(true);
@@ -67,7 +67,7 @@
         this.click_save_add = function() {
             var obj = self.get_object();
             $('#thcfg_tpl_option').tmpl(obj).appendTo('#thcfg_list_' + section);
-            thcfg_data[section].push(obj);
+            thcfg_structure[section].push(obj);
     
             self.show_detail(false);
             return false;
@@ -76,7 +76,7 @@
         this.click_save_edit = function() {
             var idx = get_index();
             var obj = self.get_object();
-            thcfg_data[section][idx] = obj;
+            thcfg_structure[section][idx] = obj;
             $('#thcfg_list_' + section + ' option').eq(idx).replaceWith($('#thcfg_tpl_option').tmpl(obj));
     
             self.show_detail(false);
@@ -101,7 +101,7 @@
     
         this.click_remove = function() {
             var idx = get_index();
-            thcfg_data[section].splice(idx, 1);
+            thcfg_structure[section].splice(idx, 1);
             $('#thcfg_list_' + section + ' option').eq(idx).remove();
             self.update_selection();
             return false;
@@ -109,9 +109,9 @@
     
         this.click_up = function() {
             var idx = get_index();
-            var tmp = thcfg_data[section][idx];
-            thcfg_data[section][idx] = thcfg_data[section][idx-1];
-            thcfg_data[section][idx-1] = tmp;
+            var tmp = thcfg_structure[section][idx];
+            thcfg_structure[section][idx] = thcfg_structure[section][idx-1];
+            thcfg_structure[section][idx-1] = tmp;
             var opt = $('#thcfg_list_' + section + ' option').eq(idx);
             opt.insertBefore(opt.prev());
             self.update_selection();
@@ -120,9 +120,9 @@
     
         this.click_down = function() {
             var idx = get_index();
-            var tmp = thcfg_data[section][idx];
-            thcfg_data[section][idx] = thcfg_data[section][idx+1];
-            thcfg_data[section][idx+1] = tmp;
+            var tmp = thcfg_structure[section][idx];
+            thcfg_structure[section][idx] = thcfg_structure[section][idx+1];
+            thcfg_structure[section][idx+1] = tmp;
             var opt = $('#thcfg_list_' + section + ' option').eq(idx);
             opt.insertAfter(opt.next());
             self.update_selection();
@@ -170,6 +170,10 @@
         $('#thcfg_dimension_max').val(obj.max);
     }
     
+    function submit() {
+        $('#thcfg_structure').val(JSON.stringify(thcfg_structure));
+    }
+    
     function bind_events() {
         bind_tabs();
         
@@ -182,7 +186,9 @@
         
         colors.bind();
         dimensions.bind();
-        text.bind();        
+        text.bind();
+        
+        $('#thcfg_structure_form').submit(submit);
     }
     
     $(function() {

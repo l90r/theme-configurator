@@ -25,7 +25,7 @@
 
 <h3>Structure</h3>
 
-<form id="thcfg_structure" method="post">
+<form id="thcfg_structure_form" method="post">
 
 <ul class="thcfg_tabs">
     <li id="thcfg_tab_color" class="thcfg_selected"><a href="#color">Colors</a></li>
@@ -37,7 +37,7 @@
 <div class="thcfg_tabwrap">
     <div id="thcfg_section_color" class="thcfg_section">
         <div class="thcfg_overview">
-            <h3>Colors</h3>
+            <h4>Colors</h4>
             <select id="thcfg_list_color" size="10">
 <?php foreach( $colors as $color ) : ?>
                 <option value="<?php echo $color->slug ?>">
@@ -49,8 +49,8 @@
             <?php thcfg_tpl_list_control() ?>
         </div>
         <div class="thcfg_detail" style="display:none">
-            <h3 class="thcfg_add_only">Add Color</h3>
-            <h3 class="thcfg_edit_only" style="display:none">Edit Color</h3>
+            <h4 class="thcfg_add_only">Add Color</h4>
+            <h4 class="thcfg_edit_only" style="display:none">Edit Color</h4>
             <ul>
                 <li>
                     <label for="thcfg_color_name">Name</label>
@@ -66,7 +66,7 @@
     </div>
     <div id="thcfg_section_dimension" class="thcfg_section" style="display:none">
         <div class="thcfg_overview">
-            <h3>Dimensions</h3>
+            <h4>Dimensions</h4>
             <select id="thcfg_list_dimension" size="10">
 <?php foreach( $dimensions as $dimension ) : ?>
                 <option value="<?php echo $dimension->slug ?>">
@@ -78,8 +78,8 @@
             <?php thcfg_tpl_list_control() ?>
         </div>
         <div class="thcfg_detail" style="display:none">
-            <h3 class="thcfg_add_only">Add Dimension</h3>
-            <h3 class="thcfg_edit_only" style="display:none">Edit Dimension</h3>
+            <h4 class="thcfg_add_only">Add Dimension</h4>
+            <h4 class="thcfg_edit_only" style="display:none">Edit Dimension</h4>
             <ul>
                 <li>
                     <label for="thcfg_dimension_name">Name</label>
@@ -103,7 +103,7 @@
     </div>
     <div id="thcfg_section_text" class="thcfg_section" style="display:none">
         <div class="thcfg_overview">
-            <h3>Text</h3>
+            <h4>Text</h4>
             <select id="thcfg_list_text" size="10">
 <?php foreach( $text as $txt ) : ?>
                 <option value="<?php echo $txt->slug ?>">
@@ -115,8 +115,8 @@
             <?php thcfg_tpl_list_control() ?>
         </div>
         <div class="thcfg_detail" style="display:none">
-            <h3 class="thcfg_add_only">Add Text Field</h3>
-            <h3 class="thcfg_edit_only" style="display:none">Edit Text Field</h3>
+            <h4 class="thcfg_add_only">Add Text Field</h4>
+            <h4 class="thcfg_edit_only" style="display:none">Edit Text Field</h4>
             <ul>
                 <li>
                     <label for="thcfg_text_name">Name</label>
@@ -131,11 +131,33 @@
         </div>
     </div>
     <div id="thcfg_section_general" class="thcfg_section" style="display:none">
-        General section - to be implemented
+        <h4>Visibility</h4>
+        <ul class="htcfg_visibility">
+            <li>
+                <label for="thcfg_visibility_color">Show Colors screen</label>
+                <input type="checkbox" id="thcfg_visibility_color" name="screens[]" value="color" <?php if($visibility['color']) : ?>checked="checked"<?php endif ?>>
+            </li>
+            <li>
+                <label for="thcfg_visibility_dimension">Show Dimensions screen</label>
+                <input type="checkbox" id="thcfg_visibility_dimension" name="screens[]" value="dimension" <?php if($visibility['dimension']) : ?>checked="checked"<?php endif ?>>
+            </li>
+            <li>
+                <label for="thcfg_visibility_text">Show Text screen</label>
+                <input type="checkbox" id="thcfg_visibility_text" name="screens[]" value="text" <?php if($visibility['text']) : ?>checked="checked"<?php endif ?>>
+            </li>
+        </ul>            
+        <h4>Representation</h4>
+        <ul class="htcfg_representation">
+            <li>
+                <label for="thcfg_prefix">Prefix for entries in the option database table</label>
+                <input type="text" id="thcfg_prefix" name="prefix" value="<?php echo htmlspecialchars($prefix) ?>">
+            </li>
+        </ul>
+            
     </div>
 </div>
-
-<input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes">
+<input type="hidden" name="structure" id="thcfg_structure">
+<input type="submit" name="action" id="submit" class="button-primary" value="Save Changes">
 </form>
 
 <h3>Storage</h3>

@@ -75,7 +75,7 @@ class Thcfg_Colors extends Thcfg_Page {
         wp_enqueue_style( 'thcfg_style', plugins_url( 'style.css', __FILE__ ));
     }
     
-    function header() {
+    function head() {
     }
 }
 

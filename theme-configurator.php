@@ -106,11 +106,11 @@ function thcfg_controller($id) {
 	return $thcfg_controller;
 }
 
-function thcfg_page_admin() { $control = thcfg_controller('admin')->action(); }
-function thcfg_page_colors() { $control = thcfg_controller('colors')->action(); }
+function thcfg_page_admin() { $control = thcfg_controller('admin')->displayBody(); }
+function thcfg_page_colors() { $control = thcfg_controller('colors')->displayBody(); }
 
-function thcfg_head_admin() { $control = thcfg_controller('admin')->header(); }
-function thcfg_head_colors() { $control = thcfg_controller('colors')->header(); }
+function thcfg_head_admin() { $control = thcfg_controller('admin')->displayHead(); }
+function thcfg_head_colors() { $control = thcfg_controller('colors')->displayHead(); }
 
 
 ?>
