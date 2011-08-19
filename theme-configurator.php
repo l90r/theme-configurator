@@ -38,6 +38,18 @@ define('THCFG_URL', plugins_url() . '/' . basename(dirname(__FILE__)));
 
 global $thcfg_pages;
 
+function thcfg_request($name) {
+	return stripslashes($_REQUEST[$name]);
+}
+
+function thcfg_get_option($name, $default) {
+	return get_option($name, $default);
+}
+
+function thcfg_add_option($name, $value) {
+	return add_option($name, $value);
+}
+
 function thcfg_admin_menu() {
 	global $thcfg_pages;
 	
