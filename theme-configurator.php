@@ -42,6 +42,15 @@ function thcfg_request($name) {
 	return stripslashes($_REQUEST[$name]);
 }
 
+function thcfg_request_encoded($name) {
+	$code = thcfg_request($name);
+	if($code) {
+		return json_decode($code);
+	} else {
+		return null;
+	}
+}
+
 function thcfg_get_option($name, $default) {
 	return get_option($name, $default);
 }

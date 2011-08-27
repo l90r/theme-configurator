@@ -1,30 +1,31 @@
 <?php
 
 require_once('Page.php');
+require_once('Model.php');
 
 class Thcfg_Admin extends Thcfg_Page {
 
 	private $values;
 	
     function Thcfg_Admin() {
+		$this->model = new Model();
     }
     	
     function display() {
-		$colors = $this->data->color;
-		$dimensions = $this->data->dimension;
-		$text = $this->data->text;
+		$colors = $this->structure->color;
+		$dimensions = $this->structure->dimension;
+		$text = $this->structure->text;
+		$prefix = $this->prefix;
         include('tpl/admin.php');
     }
 	
 	function load() {
-		$this->data = json_decode(thcfg_get_option(
-			'thcfg_structure',
-			array("color" => array(), "text" => array(), "dimension" => array())
-		));		
+		$this->prefix = $this->model->getPrefix();
+		$this->structure = $this->model->getStructure();
 	}
     
     function head() {
-		$structure = $this->data;
+		$structure = $this->structure;
         include 'tpl/admin_hdr.php';
     }
     
@@ -33,8 +34,10 @@ class Thcfg_Admin extends Thcfg_Page {
     }
 	
 	function save() {
-		$this->data = json_decode(thcfg_request('structure'));
-		thcfg_add_option('thcfg_structure', json_encode($this->data));
+		$this->prefix = thcfg_request('prefix');
+		$this->structure = thcfg_request_encoded('structure');
+		$this->model->setPrefix($this->prefix);
+		$this->model->setStructure($this->structure);
 	}
 }
 
