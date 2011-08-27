@@ -1,0 +1,32 @@
+{
+    "color":{
+        "bg": "#666",
+        "border": "#000",
+        "contentbg": "#fff",
+        "framebg": "#eee",
+        "tagtabtxt": "#fff",
+        "tagtabbg": "#a00",
+        "pagetabtxt": "#000",
+        "pagetabbg": "#0a0",
+        "hd": "#006",
+        "txt": "#333",
+        "lnk": "#000",
+        "date": "#555"
+    },
+    "dimension":{
+        "width": 700,
+        "header": 140
+    },
+    "text":{
+        "readon": "Read on...",
+        "older": "Load older posts...",
+        "counter": "Comments",
+        "comments": "Comments",
+        "request": "Please, leave a comment here",
+        "name": "Name",
+        "email": "Mail (will not be published)",
+        "web": "Website",
+        "submit": "Submit Comment",
+        "empty": "No more posts"
+    }
+}

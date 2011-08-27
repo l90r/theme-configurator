@@ -27,7 +27,14 @@
         "text":[
             {"id": "readon", "title": "Go to entire post"},
             {"id": "older", "title": "Load older posts"},
-            {"id": "counter", "title": "Comments count"}
+            {"id": "counter", "title": "Comments count"},
+            {"id": "comments", "title": "Comments"},
+            {"id": "request", "title": "Please, leave a comment here"},
+            {"id": "name", "title": "Name"},
+            {"id": "email", "title": "Mail (will not be published)"},
+            {"id": "web", "title": "Website"},
+            {"id": "submit", "title": "Submit Comment"},
+            {"id": "empty", "title": "No more posts"}
         ]
     }
 }
