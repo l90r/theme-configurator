@@ -105,6 +105,10 @@ class Model {
         return $values;
     }
     
+    function setValue($section, $id, $value) {
+        $this->set($id, $value);
+    }
+    
     function loadFiles() {
         $file = $this->themeStructureFile();
         if(file_exists($file)) {

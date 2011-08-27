@@ -34,6 +34,10 @@ class Thcfg_Colors extends Thcfg_Page {
     }
     
     function save() {
+		$this->load();
+		foreach($this->items as $item) {
+			$this->model->setValue('color', $item->id, thcfg_request($item->id));
+		}
     }
     
     function body() {
