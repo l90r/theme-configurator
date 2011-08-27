@@ -1,14 +1,14 @@
 <?php
 
 require_once('Page.php');
+require_once('Model.php');
 
 class Thcfg_Colors extends Thcfg_Page {
 
     var $values, $structure;
 
     function Thcfg_Colors() {
-        $this->values = json_decode(file_get_contents(THCFG_PATH . '/data.json'), true);
-        $this->structure = json_decode(file_get_contents(THCFG_PATH . '/structure.json'));
+		$this->model = new Model();
     }
         
     function getKeysFromArray($arr) {
@@ -38,12 +38,8 @@ class Thcfg_Colors extends Thcfg_Page {
     
     function body() {
     
-        $structure = $this->structure;
-        
-        $images = $this->values['images'];
-        $phrases = $this->values['phrases'];
-        $contents = $this->values['contents'];
-        $colors = $this->values['colors'];
+        $items = $this->items;
+        $values = $this->values;
         
         $uri_admin = thcfg_get_uri(true);
 
@@ -51,6 +47,11 @@ class Thcfg_Colors extends Thcfg_Page {
         include('tpl/colors.php');
 
     }
+	
+	function load() {
+		$this->items = $this->model->getItems('color');
+		$this->values = $this->model->getValues('color');
+	}
 
     function top() {
         $heading = 'Theme Colors';

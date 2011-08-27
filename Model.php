@@ -91,6 +91,20 @@ class Model {
         $this->setEncoded('visibility', $value);
     }
     
+    function getItems($section) {
+        $structure = $this->getStructure();
+        return $structure->$section;
+    }
+    
+    function getValues($section) {
+        $values = array();
+        $structure = $this->getStructure();
+        foreach($structure->$section as $item) {
+            $values[$item->id] = $this->get($item->id);
+        }
+        return $values;
+    }
+    
     function loadFiles() {
         $file = $this->themeStructureFile();
         if(file_exists($file)) {
@@ -105,14 +119,20 @@ class Model {
     }
     
     function loadStructure($file) {
-        $data = json_decode(file_get_contents($file));
+        $data = json_decode(file_get_contents($file)); // @todo error handling
         $this->setPrefix($data->prefix);
         $this->setVisibility($data->visibility);
         $this->setStructure($data->structure);
     }
     
     function loadSettings($file) {
-        // @todo To be implemented
+        $settings = json_decode(file_get_contents($file), true);  // @todo error handling
+        $prefix = $this->getPrefix();
+        foreach($settings as $section) {
+            foreach($section as $id => $value) {
+                $this->set($id, $value);
+            }
+        }
     }
     
     function themeStructureFile() {
