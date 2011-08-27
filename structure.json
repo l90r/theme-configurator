@@ -1,31 +1,33 @@
 {
-    "colors":[
-        {"id": "mytheme_bg", "title": "Background"},
-        {"id": "mytheme_border", "title": "Border"},
-        {"id": "mytheme_contentbg", "title": "Content Background"},
-        {"id": "mytheme_framebg", "title": "Frame Background"},
-        {"id": "mytheme_tagtabtxt", "title": "Tag Tab Text"},
-        {"id": "mytheme_tagtabbg", "title": "Tag Tab Background"},
-        {"id": "mytheme_pagetabtxt", "title": "Page Tab Text"},
-        {"id": "mytheme_pagetabbg", "title": "Page Tab Background"},
-        {"id": "mytheme_hd", "title": "Header"},
-        {"id": "mytheme_txt", "title": "General Text"},
-        {"id": "mytheme_lnk", "title": "Link"},
-        {"id": "mytheme_date", "title": "Date"}
-    ],
-    "images":[
-        {"id": "mytheme_bgimg", "title": "Background"},
-        {"id": "mytheme_titleimg", "title": "Title"},
-        {"id": "mytheme_loadingimg", "title": "Loading Icon"}
-        
-    ],
-    "contents":[
-        {"id": "mytheme_tags", "title": "Tags", "type": "taglist"},
-        {"id": "mytheme_pages", "title": "Pages", "type": "pagelist"}
-    ],
-    "phrases":[
-        {"id": "mytheme_readon", "title": "Go to entire post"},
-        {"id": "mytheme_older", "title": "Load older posts"},
-        {"id": "mytheme_counter", "title": "Comments count"}
-    ]
+    "prefix": "thcfg_",
+    "visibility": {
+        "color": true,
+        "dimension": true,
+        "text": true
+    },
+    "structure": {
+        "color":[
+            {"id": "bg", "title": "Background"},
+            {"id": "border", "title": "Border"},
+            {"id": "contentbg", "title": "Content Background"},
+            {"id": "framebg", "title": "Frame Background"},
+            {"id": "tagtabtxt", "title": "Tag Tab Text"},
+            {"id": "tagtabbg", "title": "Tag Tab Background"},
+            {"id": "pagetabtxt", "title": "Page Tab Text"},
+            {"id": "pagetabbg", "title": "Page Tab Background"},
+            {"id": "hd", "title": "Header"},
+            {"id": "txt", "title": "General Text"},
+            {"id": "lnk", "title": "Link"},
+            {"id": "date", "title": "Date"}
+        ],
+        "dimension":[
+            {"id": "width", "title": "Content Width", "min": 200, "max": 1000},
+            {"id": "header", "title": "Header Height", "min": 20, "max": 500}
+        ],
+        "text":[
+            {"id": "readon", "title": "Go to entire post"},
+            {"id": "older", "title": "Load older posts"},
+            {"id": "counter", "title": "Comments count"}
+        ]
+    }
 }
