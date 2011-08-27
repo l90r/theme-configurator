@@ -16,12 +16,14 @@ class Thcfg_Admin extends Thcfg_Page {
 		$dimensions = $this->structure->dimension;
 		$text = $this->structure->text;
 		$prefix = $this->prefix;
+		$dirty = $this->dirty;
         include('tpl/admin.php');
     }
 	
 	function load() {
 		$this->prefix = $this->model->getPrefix();
 		$this->structure = $this->model->getStructure();
+		$this->dirty = $this->model->getDirty();
 	}
     
     function head() {
@@ -38,6 +40,7 @@ class Thcfg_Admin extends Thcfg_Page {
 		$this->structure = thcfg_request_encoded('structure');
 		$this->model->setPrefix($this->prefix);
 		$this->model->setStructure($this->structure);
+		$this->dirty = $this->model->getDirty();
 	}
 }
 

@@ -10,7 +10,7 @@ class Model {
     
     function Model() {
         $this->cache = array();
-        $this->dirty = THCFG_DEFAULT;
+        $this->dirty = null;
     }
 
     private function get($name, $default=null) {

@@ -161,7 +161,17 @@
 </form>
 
 <h3>Storage</h3>
-
+<div id="thcfg_storage">
+<?php switch($dirty) : ?>
+<?php   case THCFG_DEFAULT: ?>
+You are currently using default settings, retreived from the plugin itself.
+<?php   break; case THCFG_CLEAN: ?>
+Settings in the database and on your theme are in sync.
+<?php   break; case THCFG_DIRTY: ?>
+Settings in the database are newer than those in your theme.
+<?php   break ?>
+<?php endswitch ?>
+</div>
 <form id="thcfg_storage" method="post">
 
 </form>
