@@ -130,10 +130,14 @@ function thcfg_controller($id) {
 }
 
 function thcfg_page_admin() { $control = thcfg_controller('admin')->displayBody(); }
-function thcfg_page_color() { $control = thcfg_controller('colors')->displayBody(); }
+function thcfg_page_color() { $control = thcfg_controller('color')->displayBody(); }
+function thcfg_page_text() { $control = thcfg_controller('text')->displayBody(); }
+function thcfg_page_dimension() { $control = thcfg_controller('dimension')->displayBody(); }
 
 function thcfg_head_admin() { $control = thcfg_controller('admin')->displayHead(); }
-function thcfg_head_color() { $control = thcfg_controller('colors')->displayHead(); }
+function thcfg_head_color() { $control = thcfg_controller('color')->displayHead(); }
+function thcfg_head_text() { $control = thcfg_controller('text')->displayHead(); }
+function thcfg_head_dimension() { $control = thcfg_controller('dimensions')->displayHead(); }
 
 
 ?>
