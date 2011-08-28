@@ -5,12 +5,8 @@ require_once('utils.php');
 class Thcfg_Page {
 
     var $saver, $msg, $data;
-        
-    function action() {
-        $this->display();
-    }
-    
-    function loader() {
+            
+    private function loader() {
         if($this->data === null) {
             if($_POST) {
                 $this->save();
@@ -20,21 +16,22 @@ class Thcfg_Page {
         }
     }
     
-    function queue() { }
+    public function queue() { }
     
-    function displayHead() {
+    public function displayHead() {
         $this->loader();
         $this->head();
     }
     
-    function displayBody() {
+    public function displayBody() {
         $this->loader();
         $this->display();
     }
     
-    function load() { }
-    function display() { }    
-    function save() { }
+    protected function load() { }
+    protected function display() { }    
+    protected function save() { }
+    protected function head() { }
     
 }
 
