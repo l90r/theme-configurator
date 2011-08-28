@@ -9,11 +9,11 @@ class Thcfg_Color extends Thcfg_Settings {
     }
             
     function queue() {
+		parent::queue();
         wp_enqueue_style( 'farbtastic' );
         wp_enqueue_script( 'farbtastic' );
         wp_register_script( 'thcfg_main', plugins_url( 'js/main.js', __FILE__ ), array('jquery', 'farbtastic'));
    		wp_enqueue_script( 'thcfg_main' );
-        wp_enqueue_style( 'thcfg_style', plugins_url( 'style.css', __FILE__ ));
     }    
 }
 

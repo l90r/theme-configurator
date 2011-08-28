@@ -38,6 +38,7 @@ class Thcfg_Settings extends Thcfg_Page {
 
     protected function top() {
         $heading = $this->title;
+		$section = $this->section;
         include('tpl/maintop.php');
     }
     
@@ -51,5 +52,8 @@ class Thcfg_Settings extends Thcfg_Page {
         $this->bottom();
     }
     
+	public function queue() {
+	    wp_enqueue_style( 'thcfg_style', plugins_url( 'style.css', __FILE__ ));
+	}
 }
 

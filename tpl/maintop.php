@@ -1,4 +1,4 @@
-<div id="thcfg_settings" class="wrap thcfg">
+<div id="thcfg_settings" class="wrap thcfg thcfg_<?php echo $section ?>">
 <h2><?php echo $heading ?></h2>
     
 <?php if($msg) : ?>
