@@ -11,28 +11,6 @@ class Thcfg_Color extends Thcfg_Page {
 		$this->model = new Model();
     }
         
-    function getKeysFromArray($arr) {
-        $keys = array();
-        foreach( $arr as $item ) {
-            $keys[] = $item->id;
-        }
-        return $keys;
-    }
-
-    function getKeys() {
-        return array_merge($this->getKeysFromArray($this->structure->colors),
-            $this->getKeysFromArray($this->structure->images),
-            $this->getKeysFromArray($this->structure->contents),
-            $this->getKeysFromArray($this->structure->phrases));
-    }
-    
-    function toDb() {
-        $keys = $this->getKeys();
-        foreach( $keys as $key ) {
-            update_option( $key, $_POST[$key]);
-        }
-    }
-    
     function save() {
 		$this->load();
 		foreach($this->items as $item) {
