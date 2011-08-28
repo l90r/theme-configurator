@@ -83,12 +83,12 @@ class Model {
         $this->setEncoded('_structure', $value);
     }
     
-    function getVisibility() {
-        return $this->getEncoded('visibility');
+    function getScreens() {
+        return $this->getEncoded('screens');
     }
     
-    function setVisibility($value) {
-        $this->setEncoded('visibility', $value);
+    function setScreens($value) {
+        $this->setEncoded('screens', $value);
     }
     
     function getItems($section) {
@@ -125,7 +125,7 @@ class Model {
     function loadStructure($file) {
         $data = json_decode(file_get_contents($file)); // @todo error handling
         $this->setPrefix($data->prefix);
-        $this->setVisibility($data->visibility);
+        $this->setScreens($data->screens);
         $this->setStructure($data->structure);
     }
     

@@ -1,10 +1,6 @@
 {
     "prefix": "thcfg_",
-    "visibility": {
-        "color": true,
-        "dimension": true,
-        "text": true
-    },
+    "screens": ["color", "dimension", "text"],
     "structure": {
         "color":[
             {"id": "bg", "title": "Background"},

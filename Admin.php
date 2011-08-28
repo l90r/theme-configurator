@@ -17,6 +17,7 @@ class Thcfg_Admin extends Thcfg_Page {
 		$text = $this->structure->text;
 		$prefix = $this->prefix;
 		$dirty = $this->dirty;
+		$screens = $this->screens;
         include('tpl/admin.php');
     }
 	
@@ -24,6 +25,7 @@ class Thcfg_Admin extends Thcfg_Page {
 		$this->prefix = $this->model->getPrefix();
 		$this->structure = $this->model->getStructure();
 		$this->dirty = $this->model->getDirty();
+		$this->screens = $this->model->getScreens();
 	}
     
     function head() {
@@ -38,8 +40,10 @@ class Thcfg_Admin extends Thcfg_Page {
 	function save() {
 		$this->prefix = thcfg_request('prefix');
 		$this->structure = thcfg_request_encoded('structure');
+		$this->screens = thcfg_request_array('screens');
 		$this->model->setPrefix($this->prefix);
 		$this->model->setStructure($this->structure);
+		$this->model->setScreens($this->screens);
 		$this->dirty = $this->model->getDirty();
 	}
 }

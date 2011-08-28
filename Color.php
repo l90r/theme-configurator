@@ -3,11 +3,11 @@
 require_once('Page.php');
 require_once('Model.php');
 
-class Thcfg_Colors extends Thcfg_Page {
+class Thcfg_Color extends Thcfg_Page {
 
     var $values, $structure;
 
-    function Thcfg_Colors() {
+    function __construct() {
 		$this->model = new Model();
     }
         

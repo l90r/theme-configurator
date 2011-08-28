@@ -135,15 +135,15 @@
         <ul class="htcfg_visibility">
             <li>
                 <label for="thcfg_visibility_color">Show Colors screen</label>
-                <input type="checkbox" id="thcfg_visibility_color" name="screens[]" value="color" <?php if($visibility['color']) : ?>checked="checked"<?php endif ?>>
+                <input type="checkbox" id="thcfg_visibility_color" name="screens[]" value="color" <?php if(in_array('color', $screens)) : ?>checked="checked"<?php endif ?>>
             </li>
             <li>
                 <label for="thcfg_visibility_dimension">Show Dimensions screen</label>
-                <input type="checkbox" id="thcfg_visibility_dimension" name="screens[]" value="dimension" <?php if($visibility['dimension']) : ?>checked="checked"<?php endif ?>>
+                <input type="checkbox" id="thcfg_visibility_dimension" name="screens[]" value="dimension" <?php if(in_array('dimension', $screens)) : ?>checked="checked"<?php endif ?>>
             </li>
             <li>
                 <label for="thcfg_visibility_text">Show Text screen</label>
-                <input type="checkbox" id="thcfg_visibility_text" name="screens[]" value="text" <?php if($visibility['text']) : ?>checked="checked"<?php endif ?>>
+                <input type="checkbox" id="thcfg_visibility_text" name="screens[]" value="text" <?php if(in_array('text', $screens)) : ?>checked="checked"<?php endif ?>>
             </li>
         </ul>            
         <h4>Representation</h4>

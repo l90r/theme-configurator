@@ -39,7 +39,7 @@ define('THCFG_URL', plugins_url() . '/' . basename(dirname(__FILE__)));
 global $thcfg_pages;
 
 function thcfg_request($name) {
-	return stripslashes($_REQUEST[$name]);
+	return stripslashes_deep($_REQUEST[$name]);
 }
 
 function thcfg_request_encoded($name) {
@@ -49,6 +49,14 @@ function thcfg_request_encoded($name) {
 	} else {
 		return null;
 	}
+}
+
+function thcfg_request_array($name) {
+	$arr = thcfg_request($name);
+	if(!$arr) {
+		$arr = array();
+	}
+	return $arr;
 }
 
 function thcfg_get_option($name, $default) {
@@ -61,21 +69,29 @@ function thcfg_add_option($name, $value) {
 
 function thcfg_admin_menu() {
 	global $thcfg_pages;
+	require_once('Model.php');
 	
 	$titles = array(
-		'colors' => 'Colors',
+		'color' => 'Colors',
 		'images' => 'Images',
-		'contents' => 'Contents',
-		'phrase' => 'Phrases'
+		'text' => 'Text',
+		'dimension' => 'Dimensions',
+		'admin' => 'Theme Configurator'
 	);
+
+	$model = new Model();
+	$screens = $model->getScreens();
 	if(get_option('thcfg_advanced', false)) {
-		$titles['admin'] = 'Theme Configurator';
+		$screens[] = 'admin';
 	}
 	
+	$thcfg_pages = array();
 	foreach($titles as $id => $title) {
-		$handle = add_theme_page($title, $title, 'edit_theme_options', $id, 'thcfg_page_' . $id );
-		$thcfg_pages[$id] = $handle;
-		add_action('admin_head-' . $handle, 'thcfg_head_' . $id );
+		if(in_array($id, $screens)) {
+			$handle = add_theme_page($title, $title, 'edit_theme_options', $id, 'thcfg_page_' . $id );
+			$thcfg_pages[$id] = $handle;
+			add_action('admin_head-' . $handle, 'thcfg_head_' . $id );
+		}
 	}
 }
 
@@ -100,26 +116,24 @@ function thcfg_settings_cb() {
 }
 
 function thcfg_controller($id) {
+	static $thcfg_controller = null;
+	$valid = array('admin', 'color', 'dimension', 'text');
 	if(!$thcfg_controller) {
-		switch($id) {
-			case 'colors':
-				require_once(THCFG_PATH . '/Colors.php');
-				$thcfg_controller = new Thcfg_Colors();
-				break;
-			case 'admin':
-				require_once(THCFG_PATH . '/Admin.php');
-				$thcfg_controller = new Thcfg_Admin();
-				break;
+		if(in_array($id, $valid)) {
+			$file = THCFG_PATH . '/' . ucwords($id) . '.php';
+			$class = 'Thcfg_' . ucwords($id);
+			require_once($file);
+			$thcfg_controller = new $class();
 		}
 	}
 	return $thcfg_controller;
 }
 
 function thcfg_page_admin() { $control = thcfg_controller('admin')->displayBody(); }
-function thcfg_page_colors() { $control = thcfg_controller('colors')->displayBody(); }
+function thcfg_page_color() { $control = thcfg_controller('colors')->displayBody(); }
 
 function thcfg_head_admin() { $control = thcfg_controller('admin')->displayHead(); }
-function thcfg_head_colors() { $control = thcfg_controller('colors')->displayHead(); }
+function thcfg_head_color() { $control = thcfg_controller('colors')->displayHead(); }
 
 
 ?>
