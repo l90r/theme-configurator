@@ -140,11 +140,11 @@ class Model {
     }
     
     function themeStructureFile() {
-        return get_stylesheet_directory() . '/thcfg-structure.json';
+        return TEMPLATEPATH . '/thcfg-structure.json';
     }
 
     function themeSettingsFile() {
-        return get_stylesheet_directory() . '/thcfg-settings.json';
+        return TEMPLATEPATH . '/thcfg-settings.json';
     }
 
     function defaultStructureFile() {
