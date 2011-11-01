@@ -33,6 +33,21 @@ add_action('admin_menu', 'thcfg_admin_menu' );
 add_action('admin_init', 'thcfg_admin_init');
 add_action('admin_enqueue_scripts', 'thcfg_enqueue');
 
+add_action('wp_ajax_thcfg_settings', 'thcfg_settings_download');
+add_action('wp_ajax_thcfg_structure', 'thcfg_structure_download');
+
+function thcfg_settings_download() {
+	require_once('Model.php');
+	$model = new Model();
+	die($model->dumpSettings());
+}
+
+function thcfg_structure_download() {
+	require_once('Model.php');
+	$model = new Model();
+	die($model->dumpStructure());
+}
+
 define('THCFG_PATH', dirname(__FILE__));
 define('THCFG_URL', plugins_url() . '/' . basename(dirname(__FILE__)));
 
