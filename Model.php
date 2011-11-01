@@ -130,27 +130,22 @@ class Model {
         ));
     }
     
-    function getOptions() {
-        $structure = $this->getStructure();
-        $options = array();
-        foreach($structure->text as $text)
-            $options[] = $text->id;
-        foreach($structure->dimension as $dimension)
-            $options[] = $dimension->id;
-        foreach($structure->color as $color)
-            $options[] = $color->id;
-        return $options;
-    }
-    
     function dumpSettings() {
-        $options = $this->getOptions();
-        $data = array();
-        foreach($options as $option) {
-            $data[$option] = $this->get($option);
-        }
+        $structure = $this->getStructure();
+        $data = array(
+            'text' => array(),
+            'dimension' => array(),
+            'color' => array()
+        );
+        foreach($structure->text as $option)
+            $data['text'][$option->id] = $this->get($option->id);
+        foreach($structure->dimension as $option)
+            $data['dimension'][$option->id] = $this->get($option->id);
+        foreach($structure->color as $option)
+            $data['color'][$option->id] = $this->get($option->id);
         return json_encode($data);
     }
-    
+        
     function loadStructure($file) {
         $data = json_decode(file_get_contents($file)); // @todo error handling
         $this->setPrefix($data->prefix);

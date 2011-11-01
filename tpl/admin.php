@@ -164,11 +164,20 @@
 <div id="thcfg_storage">
 <?php switch($dirty) : ?>
 <?php   case THCFG_DEFAULT: ?>
-You are currently using default settings, retreived from the plugin itself.
+<p>You are currently using default settings, retreived from the plugin itself.</p>
 <?php   break; case THCFG_CLEAN: ?>
-Settings in the database and on your theme are in sync.
+<p>Settings in the database and on your theme are in sync.</p>
 <?php   break; case THCFG_DIRTY: ?>
-Settings in the database are newer than those in your theme.
+<p>Settings in the database have been modified.</p>
+<form action="#" method="post">
+<input type="submit" name="save_to_theme" value="Update theme's settings" class="button-primary" />
+<input type="submit" name="reset_to_theme" value="Reset to theme's settings" class="button" />
+<input type="submit" name="reset_to_default" value="Reset to plugin defaults" class="button" />
+</form>
+<p>Alternatively you can manually save
+<a href="admin-ajax.php?action=thcfg_structure">structure</a> and
+<a href="admin-ajax.php?action=thcfg_settings">settings</a> data as thcfg-structure.json and thcfg-settings.json respectively
+within your theme's root directory, in order to distribute your current settings with your theme.</p>
 <?php   break ?>
 <?php endswitch ?>
 </div>

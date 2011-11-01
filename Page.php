@@ -28,6 +28,10 @@ class Thcfg_Page {
         $this->display();
     }
     
+    public function message($msg) {
+        $this->msg .= $msg;
+    }
+    
     protected function load() { }
     protected function display() { }    
     protected function save() { }

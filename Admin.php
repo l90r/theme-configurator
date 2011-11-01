@@ -18,6 +18,7 @@ class Thcfg_Admin extends Thcfg_Page {
 		$prefix = $this->prefix;
 		$dirty = $this->dirty;
 		$screens = $this->screens;
+		$msg = $this->msg;
         include('tpl/admin.php');
     }
 	
@@ -37,7 +38,33 @@ class Thcfg_Admin extends Thcfg_Page {
    		wp_enqueue_script( 'jquery-ui-sortable' );
     }
 	
+	function resetToTheme() {
+		$this->message('@todo reset to theme');
+	}
+	
+	function resetToDefault() {
+		$this->message('@todo reset to default');
+	}
+	
+	function saveToTheme() {
+		$this->message('@todo save to theme');
+	}
+
 	function save() {
+		$this->data = 'dummy';
+		if(thcfg_request('reset_to_theme')) {
+			$this->resetToTheme();
+		} elseif(thcfg_request('reset_to_default')) {
+			$this->resetToDefault();
+		} elseif(thcfg_request('save_to_theme')) {
+			$this->saveToTheme();
+		} else {
+			$this->saveSettings();
+		}
+		$this->load();
+	}
+	
+	function saveSettings() {
 		$this->prefix = thcfg_request('prefix');
 		$this->structure = thcfg_request_encoded('structure');
 		$this->screens = thcfg_request_array('screens');
@@ -45,6 +72,7 @@ class Thcfg_Admin extends Thcfg_Page {
 		$this->model->setStructure($this->structure);
 		$this->model->setScreens($this->screens);
 		$this->dirty = $this->model->getDirty();
+		$this->message('Settings saved');
 	}
 }
 
