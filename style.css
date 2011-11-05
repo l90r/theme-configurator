@@ -197,3 +197,7 @@
 .thcfg fieldset {
     margin-top: 20px;
 }
+
+.thcfg h4 {
+    margin-top: 0;
+}
