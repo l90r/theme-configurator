@@ -39,15 +39,27 @@ class Thcfg_Admin extends Thcfg_Page {
     }
 	
 	function resetToTheme() {
-		$this->message('@todo reset to theme');
+		if($this->model->loadFromTheme()) {
+			$this->message('Settings successfully reset to theme defaults.');
+		} else {
+			$this->message('Error loading settings from theme.');
+		}
 	}
 	
 	function resetToDefault() {
-		$this->message('@todo reset to default');
+		if($this->model->loadFromPlugin()) {
+			$this->message('Settings successfully reset to plugin defaults.');
+		} else {
+			$this->message('Internal error. Could not load settings from plugin.');
+		}
 	}
 	
 	function saveToTheme() {
-		$this->message('@todo save to theme');
+		if($this->model->saveToTheme()) {
+			$this->message('Settings successfully reset to plugin defaults.');
+		} else {
+			$this->message('Could write to the theme. Did you check file permissions? Alternatively you can update those files manually.');
+		}
 	}
 
 	function save() {

@@ -108,17 +108,40 @@ class Model {
     function setValue($section, $id, $value) {
         $this->set($id, $value);
     }
+
+    function loadFromTheme() {
+        $file = $this->themeStructureFile();
+        if(!file_exists($file)) {
+            return false;
+        }
+        if(!$this->loadStructure($file)) {
+            return false;
+        }
+        if(!$this->loadSettings($this->themeSettingsFile())) {
+            return false;
+        }
+        $this->setDirty(THCFG_CLEAN);
+        return true;
+    }
+    
+    function loadFromPlugin() {
+        $file = $this->defaultStructureFile();
+        if(!file_exists($file)) {
+            return false;
+        }
+        if(!$this->loadStructure($file)) {
+            return false;
+        }
+        if(!$this->loadSettings($this->defaultSettingsFile())) {
+            return false;
+        }
+        $this->setDirty(THCFG_DEFAULT);
+        return true;
+    }
     
     function loadFiles() {
-        $file = $this->themeStructureFile();
-        if(file_exists($file)) {
-            $this->loadStructure($file);
-            $this->loadSettings($this->themeSettingsFile());
-            $this->setDirty(THCFG_CLEAN);
-        } else {
-            $this->loadStructure($this->defaultStructureFile());
-            $this->loadSettings($this->defaultSettingsFile());            
-            $this->setDirty(THCFG_DEFAULT);
+        if(!$this->loadFromTheme()) {
+            $this->loadFromPlugin();
         }
     }
     
@@ -128,6 +151,20 @@ class Model {
             'screens' => $this->getScreens(),
             'structure' => $this->getStructure()
         ));
+    }
+    
+    function saveToTheme() {
+        $settings = $this->dumpSettings();
+		$structure = $this->dumpStructure();
+		$result = @file_put_contents($this->getSettingsFile(), $settings);
+		if($result === false) {
+			return false;
+		}
+		$result = @file_put_contents($this->getStructure(), $structure);
+		if($result === false) {
+			return false;
+		}
+        return true;
     }
     
     function dumpSettings() {
@@ -147,20 +184,36 @@ class Model {
     }
         
     function loadStructure($file) {
-        $data = json_decode(file_get_contents($file)); // @todo error handling
+        $content = @file_get_contents($file);
+        if($content === false) {
+            return false;
+        }
+        $data = json_decode($content);
+        if($data === NULL) {
+            return false;
+        }
         $this->setPrefix($data->prefix);
         $this->setScreens($data->screens);
         $this->setStructure($data->structure);
+        return true;
     }
     
     function loadSettings($file) {
-        $settings = json_decode(file_get_contents($file), true);  // @todo error handling
+        $content = @file_get_contents($file);
+        if($content === false) {
+            return false;
+        }
+        $settings = json_decode($content, true);
+        if($settings === NULL) {
+            return false;
+        }
         $prefix = $this->getPrefix();
         foreach($settings as $section) {
             foreach($section as $id => $value) {
                 $this->set($id, $value);
             }
         }
+        return true;
     }
     
     function themeStructureFile() {
@@ -172,11 +225,11 @@ class Model {
     }
 
     function defaultStructureFile() {
-        return plugins_url( 'structure.json', __FILE__ );
+        return plugin_dir_path( __FILE__ ) . '/structure.json';
     }
 
     function defaultSettingsFile() {
-        return plugins_url( 'settings.json', __FILE__ );
+        return plugin_dir_path( __FILE__ ) . '/settings.json';
     }
     
 }

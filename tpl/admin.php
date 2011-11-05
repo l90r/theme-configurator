@@ -169,6 +169,8 @@
 <p>Settings in the database and on your theme are in sync.</p>
 <?php   break; case THCFG_DIRTY: ?>
 <p>Settings in the database have been modified.</p>
+<?php   break ?>
+<?php endswitch ?>
 <form action="#" method="post">
 <input type="submit" name="save_to_theme" value="Update theme's settings" class="button-primary" />
 <input type="submit" name="reset_to_theme" value="Reset to theme's settings" class="button" />
@@ -178,8 +180,6 @@
 <a href="admin-ajax.php?action=thcfg_structure">structure</a> and
 <a href="admin-ajax.php?action=thcfg_settings">settings</a> data as thcfg-structure.json and thcfg-settings.json respectively
 within your theme's root directory, in order to distribute your current settings with your theme.</p>
-<?php   break ?>
-<?php endswitch ?>
 </div>
 <form id="thcfg_storage" method="post">
 
