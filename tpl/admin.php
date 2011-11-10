@@ -149,7 +149,7 @@
         <h4>Representation</h4>
         <ul class="htcfg_representation">
             <li>
-                <label for="thcfg_prefix">Prefix for entries in the option database table</label>
+                <label for="thcfg_prefix">Prefix for Wordpress options</label>
                 <input type="text" id="thcfg_prefix" name="prefix" value="<?php echo htmlspecialchars($prefix) ?>">
             </li>
         </ul>
@@ -160,11 +160,13 @@
 <input type="submit" name="action" id="submit" class="button-primary" value="Save Changes">
 </form>
 
+<p><a href="#" id="thcfg_show_storage">Show storage options...</a></p>
+<div id="thcfg_storage" style="display:none">
+<p><a href="#" id="thcfg_hide_storage">Hide storage options...</a></p>
 <h3>Storage</h3>
-<div id="thcfg_storage">
 <?php switch($dirty) : ?>
 <?php   case THCFG_DEFAULT: ?>
-<p>You are currently using default settings, retreived from the plugin itself.</p>
+<p>You are currently using sample settings, retreived from the plugin itself.</p>
 <?php   break; case THCFG_CLEAN: ?>
 <p>Settings in the database and on your theme are in sync.</p>
 <?php   break; case THCFG_DIRTY: ?>

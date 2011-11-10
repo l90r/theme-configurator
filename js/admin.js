@@ -189,6 +189,8 @@
         text.bind();
         
         $('#thcfg_structure_form').submit(submit);
+        
+        $('#thcfg_show_storage,#thcfg_hide_storage').click(function() { $('#thcfg_storage,#thcfg_show_storage').toggle(); return false; });
     }
     
     $(function() {
