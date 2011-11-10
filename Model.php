@@ -8,11 +8,28 @@ class Model {
     private $cache;
     private $dirty;
     
-    function Model() {
+    private static $instance = null;
+    
+    public function getInstance() {
+        if(!isset(self::$instance)) {
+            self::$instance = new Model();
+            self::$instance->init();
+        }
+        return self::$instance;
+    }
+    
+    private function Model() {
         $this->cache = array();
         $this->dirty = null;
     }
 
+    private function init() {
+        $this->prefix = get_option($this->prefixOption(), null);
+        if($this->prefix === null) {
+            $this->loadFiles();
+        }
+    }
+    
     private function get($name, $default=null) {
         $cached = $this->cache[$name];
         if($cached) {
@@ -43,22 +60,50 @@ class Model {
         $this->set($name, json_encode($value));
     }
     
+    public function prefixOption() {
+        return 'thcfg_pre_' . get_stylesheet();
+    }
+    
     public function getPrefix() {
         if($this->prefix === null) {
-            $this->prefix = get_option('thcfg_prefix', null);
-            if($this->prefix === null) {
-                $this->loadFiles();
-            }
+            $this->prefix = get_option($this->prefixOption(), null);
         }
         return $this->prefix;
     }
     
-    public function setPrefix($value) {
-        if($this->prefix != $value) {
-            // @todo Rename all existing settings
-            $this->prefix = $value;
-            update_option('thcfg_prefix', $value);
-            $this->setDirty(THCFG_DIRTY);        }
+    public function setPrefix($new) {
+        if($new === null) {
+            $new = get_stylesheet() . '_';
+        }
+        $old = $this->getPrefix();
+        if($old != $new) {
+            $this->renameSettings($old, $new);
+            $this->setDirty(THCFG_DIRTY);
+            update_option($this->prefixOption(), $new);
+        }
+        $this->prefix = $new;
+    }
+    
+    public function renameSettings($old, $new) {
+        $struct = $this->getStructure();
+        if($struct === NULL) {
+            return;
+        }
+        foreach($struct as $section) {
+            foreach($section as $item) {
+                $this->rename($old, $new, $item->id);
+            }
+        }
+        $this->rename($old, $new, '_structure');
+        $this->rename($old, $new, '_screens');
+    }
+    
+    public function rename($old, $new, $id) {
+        $val = get_option($old . $id, null);
+        if($val !== null) {
+            update_option($new . $id, $val);
+            delete_option($old . $id);
+        }
     }
     
     public function getDirty() {
@@ -84,11 +129,11 @@ class Model {
     }
     
     function getScreens() {
-        return $this->getEncoded('screens');
+        return $this->getEncoded('_screens');
     }
     
     function setScreens($value) {
-        $this->setEncoded('screens', $value);
+        $this->setEncoded('_screens', $value);
     }
     
     function getItems($section) {

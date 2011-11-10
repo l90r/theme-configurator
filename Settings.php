@@ -10,7 +10,7 @@ class Thcfg_Settings extends Thcfg_Page {
     function __construct($section, $title) {
 		$this->section = $section;
 		$this->title = $title;
-		$this->model = new Model();
+		$this->model = Model::getInstance();
     }
         
     protected function save() {

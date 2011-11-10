@@ -38,13 +38,13 @@ add_action('wp_ajax_thcfg_structure', 'thcfg_structure_download');
 
 function thcfg_settings_download() {
 	require_once('Model.php');
-	$model = new Model();
+	$model = Model::getInstance();
 	die($model->dumpSettings());
 }
 
 function thcfg_structure_download() {
 	require_once('Model.php');
-	$model = new Model();
+	$model = Model::getInstance();
 	die($model->dumpStructure());
 }
 
@@ -94,7 +94,7 @@ function thcfg_admin_menu() {
 		'admin' => 'Theme Configurator'
 	);
 
-	$model = new Model();
+	$model = Model::getInstance();
 	$screens = $model->getScreens();
 	if(get_option('thcfg_advanced', false)) {
 		$screens[] = 'admin';

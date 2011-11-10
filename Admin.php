@@ -8,7 +8,7 @@ class Thcfg_Admin extends Thcfg_Page {
 	private $values;
 	
     function Thcfg_Admin() {
-		$this->model = new Model();
+		$this->model = Model::getInstance();
     }
     	
     function display() {

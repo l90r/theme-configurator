@@ -1,5 +1,5 @@
 {
-    "prefix": "thcfg_",
+    "prefix": null,
     "screens": ["color", "dimension", "text"],
     "structure": {
         "color":[
