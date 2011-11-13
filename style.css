@@ -201,3 +201,35 @@
 .thcfg h4 {
     margin-top: 0;
 }
+
+.thcfg_dimension fieldset label {
+    width: 20%;
+}
+
+.thcfg_left {
+    float: left;
+    width: 350px;
+}
+
+.thcfg li .thcfg_left input {
+    width: 50px;
+}
+
+.thcfg li .thcfg_left label {
+    width: 250px;
+}
+
+.thcfg_right {
+    padding: 7px;
+    float: left;
+    width: 515px;
+    clear: right;
+}
+
+.thcfg_dimension li {
+    clear: both;
+}
+
+.thcfg li .thcfg_knob {
+    width: 500px;
+}
