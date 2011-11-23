@@ -56,7 +56,7 @@ class Thcfg_Admin extends Thcfg_Page {
 	
 	function saveToTheme() {
 		if($this->model->saveToTheme()) {
-			$this->message('Settings successfully reset to plugin defaults.');
+			$this->message('Settings successfully stored to the theme.');
 		} else {
 			$this->message('Could write to the theme. Did you check file permissions? Alternatively you can update those files manually.');
 		}
