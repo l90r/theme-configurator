@@ -201,11 +201,11 @@ class Model {
     function saveToTheme() {
         $settings = $this->dumpSettings();
 		$structure = $this->dumpStructure();
-		$result = @file_put_contents($this->getSettingsFile(), $settings);
+        $result = @file_put_contents($this->themeSettingsFile(), $settings);
 		if($result === false) {
 			return false;
 		}
-		$result = @file_put_contents($this->getStructure(), $structure);
+		$result = @file_put_contents($this->themeStructureFile(), $structure);
 		if($result === false) {
 			return false;
 		}
