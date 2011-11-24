@@ -1,32 +1,24 @@
 {
-    "color":{
-        "bg": "#666",
-        "border": "#000",
-        "contentbg": "#fff",
-        "framebg": "#eee",
-        "tagtabtxt": "#fff",
-        "tagtabbg": "#a00",
-        "pagetabtxt": "#000",
-        "pagetabbg": "#0a0",
-        "hd": "#006",
-        "txt": "#333",
-        "lnk": "#000",
-        "date": "#555"
+    "text":{
+        "search":"Search",
+        "categories":"Categories",
+        "blogroll":"Blogroll",
+        "tags":"Tags",
+        "license":"All Rights Reserved"
     },
     "dimension":{
-        "width": 700,
-        "header": 140
+        "width":"700",
+        "top":150,
+        "main_font":10
     },
-    "text":{
-        "readon": "Read on...",
-        "older": "Load older posts...",
-        "counter": "Comments",
-        "comments": "Comments",
-        "request": "Please, leave a comment here",
-        "name": "Name",
-        "email": "Mail (will not be published)",
-        "web": "Website",
-        "submit": "Submit Comment",
-        "empty": "No more posts"
+    "color":{
+        "header":"#69D2E7",
+        "header_border":"#A7DBD8",
+        "background":"#E0E4CC",
+        "border":"#000",
+        "contentbg":"#fff",
+        "txt":"#333",
+        "link":"#FA6900",
+        "hover":"#F38630"
     }
 }

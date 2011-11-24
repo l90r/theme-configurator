@@ -1,36 +1,30 @@
 {
-    "prefix": null,
-    "screens": ["color", "dimension", "text"],
-    "structure": {
+    "prefix":null,
+    "screens":[
+        "color",
+        "dimension",
+        "text"
+    ],
+    "structure":{
         "color":[
-            {"id": "bg", "title": "Background"},
-            {"id": "border", "title": "Border"},
-            {"id": "contentbg", "title": "Content Background"},
-            {"id": "framebg", "title": "Frame Background"},
-            {"id": "tagtabtxt", "title": "Tag Tab Text"},
-            {"id": "tagtabbg", "title": "Tag Tab Background"},
-            {"id": "pagetabtxt", "title": "Page Tab Text"},
-            {"id": "pagetabbg", "title": "Page Tab Background"},
-            {"id": "hd", "title": "Header"},
-            {"id": "txt", "title": "General Text"},
-            {"id": "lnk", "title": "Link"},
-            {"id": "date", "title": "Date"}
+            {"id":"header", "title":"Header"},
+            {"id":"header_border", "title":"Header Border"},
+            {"id":"background", "title":"Background"},
+            {"id":"border", "title":"Border"},
+            {"id":"contentbg", "title":"Content Background"},
+            {"id":"txt", "title":"General Text"},
+            {"id":"link", "title":"Link"},
+            {"id":"hover", "title":"Link (Mouse over)"}
         ],
         "dimension":[
-            {"id": "width", "title": "Content Width", "min": 200, "max": 1000},
-            {"id": "header", "title": "Header Height", "min": 20, "max": 500}
+            {"id":"width", "title":"Content Width", "min":200, "max":1000},
+            {"id":"top", "title":"Top Height", "min":"20", "max":"500"},
+            {"id":"main_font", "title":"Normal Font Height", "min":"8", "max":"14"}
         ],
         "text":[
-            {"id": "readon", "title": "Go to entire post"},
-            {"id": "older", "title": "Load older posts"},
-            {"id": "counter", "title": "Comments count"},
-            {"id": "comments", "title": "Comments"},
-            {"id": "request", "title": "Please, leave a comment here"},
-            {"id": "name", "title": "Name"},
-            {"id": "email", "title": "Mail (will not be published)"},
-            {"id": "web", "title": "Website"},
-            {"id": "submit", "title": "Submit Comment"},
-            {"id": "empty", "title": "No more posts"}
+            {"id":"search", "title":"Search"}, {"id":"categories", "title":"Categories"},
+            {"id":"blogroll", "title":"Blogroll"}, {"id":"tags", "title":"Tags"},
+            {"id":"license", "title":"License Text"}
         ]
     }
 }
